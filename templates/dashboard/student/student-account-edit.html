@@ -1,0 +1,190 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container p-0">
+                <div class="row m-0">
+                    <div class="col-lg container-fluid page__container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+                            <li class="breadcrumb-item active">Edit Account</li>
+                        </ol>
+                        <h1 class="h2">Basic Information</h1>
+                        <p>{% include 'partials/_messages.html'%}</p>
+                        <p>{{error}}</p>
+                        <form action="" method="post">
+                        {% csrf_token %}                        
+                        <div class="card">
+                            <div class="list-group list-group-fit">
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-firstname">
+                                        <div class="form-row">
+                                            <label id="label-firstname" for="firstname"
+                                                class="col-md-3 col-form-label form-label">First name</label>
+                                            <div class="col-md-9">
+                                                {{ user_form.first_name }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Last name</label>
+                                            <div class="col-md-9">
+                                                {{ user_form.last_name }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-email">
+                                        <div class="form-row">
+                                            <label id="label-email" for="email"
+                                                class="col-md-3 col-form-label form-label">Your email address</label>
+                                            <div class="col-md-9">
+                                                <div role="group" class="input-group input-group-merge">
+                                                    {{ user_form.email }}
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="material-icons">email</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Sex</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.sex}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Phone</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.phone}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Bio</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.bio}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">zipcode</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.zipcode}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Country</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.country}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Twitter Link</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.twitter_link}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label">Facebook Link</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.facebook_link}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                        <div class="form-row">
+                                            <label id="label-lastname" for="lastname"
+                                                class="col-md-3 col-form-label form-label"> Date of Birth</label>
+                                            <div class="col-md-9">
+                                                {{ profile_form.date_of_birth}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    
+                    </div>
+                    <div id="page-nav" class="col-lg-auto page-nav">
+                        <div data-perfect-scrollbar>
+                            <div class="page-section pt-lg-32pt">
+                                <ul class="nav page-nav__menu">
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:student_edit_profile' %}" class="nav-link active">Basic
+                                            Information</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:change_login_details'%}" class="nav-link">Change Login Details
+                                            </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:upload_profile_photo'%}" class="nav-link">Change profile picture
+                                            </a>
+                                    </li>
+                                </ul>
+                                <div class="page-nav__content">
+                                    <button class="btn btn-success" type="submit">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+        </div>
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

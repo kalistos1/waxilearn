@@ -1,0 +1,90 @@
+﻿{% extends 'dashboard_base.html' %}
+
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Course</a></li>
+                    <li class="breadcrumb-item"><a href="">lesson</a></li>
+                    <li class="breadcrumb-item active">{{lesson.title}}</li>
+                </ol>
+                <h1 class="h2">{{lesson.title}}</h1>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                {% video lesson_text.lesson.add_video 'medium' %}
+                            </div>
+                        </div>
+
+                        <!-- Lessons -->
+                        {% if lesson_text %}
+                        <ol class="card list-group list-group-fit py-3 px-3">
+
+                            {% for text in lesson_text %}
+                            {{text.body |safe }}
+                            {% endfor %}
+
+                            {% else %}
+                            <br>
+                            <b>No text has been added for this lesson</b>
+                            <br>
+                            <button class="btn btn-large btn-success">
+                                <a href="{% url 'onlinecourses:add_text' lesson.id %}" class="text-light">Add lesson
+                                    text</a>
+                            </button>
+                            <br>
+                        </ol>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Course Description</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    {{ lesson.description|safe}}
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Ratings</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                </div>
+                                <small class="text-muted">20 ratings</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include '../../partials/_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

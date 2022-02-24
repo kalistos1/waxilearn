@@ -1,0 +1,91 @@
+{% url 'accounts:instructordashboard' as instructordashboard %}
+{% url 'accounts:instructor_profile' as instructor_profile %}
+{% url 'onlinecourses:instructor_courses_all' as instructor_courses_all %}
+{% url 'onlinecourses:create_course' as create_course %}
+{% url 'accounts:logout' as logout %}
+{% url 'all_signal' as all_signal %}
+{% url 'all_forecast' as all_forecast %}
+{% url 'create_forecast' as create_forecast %}
+{% url 'create_signals' as create_signals %}
+{% url 'create_student_sub' as create_student_sub %}
+{% url 'create_signals_sub' as create_signals_sub%}
+{% url 'create_forecast_sub' as create_forecast_sub%}
+
+
+<div class="mdk-drawer js-mdk-drawer" id="default-drawer" style="position:relative;z-index:100000;">
+    <div class="mdk-drawer__content ">
+        <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
+            <div class="sidebar-p-y">
+                <div class="sidebar-heading">APPLICATIONS</div>
+                <ul class="sidebar-menu sm-active-button-bg">
+
+                    <li class="sidebar-menu-item {% if request.path == instructordashboard %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:instructordashboard' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervised_user_circle</i> Instructor
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == instructor_profile %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:instructor_profile' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">verified_user</i> Profile
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_student_sub %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'create_student_sub' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">attach_money</i>student subscriptions
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_signals_sub %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'create_signals_sub' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">attach_money</i>Signal subscriptions
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_forecast_sub %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'create_forecast_sub' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">attach_money</i>sports subscriptions
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-heading">Instructor</div>
+                <ul class="sidebar-menu sm-active-button-bg">
+                    <li class="sidebar-menu-item {% if request.path == instructor_courses_all %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'onlinecourses:instructor_courses_all' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>
+                            Course Manager
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_course %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'onlinecourses:create_course' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">add_chart</i>Add Courses
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == all_forecast %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'all_forecast' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">library_books</i>All Bet Forecast
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == all_signal %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'all_signal' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">power_input</i>All Crypto Signal
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_signals %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'create_signals' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lightbulb</i>Add Crypto Signals
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == create_forecast %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'create_forecast' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">sports_soccer</i>Add Bet Forecast
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:logout' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

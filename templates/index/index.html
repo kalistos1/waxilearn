@@ -1,0 +1,796 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+	<!-- Basic Page Needs
+	================================================== -->
+	<meta charset="utf-8">
+	<title>Waxischool</title>
+	<meta name="description" content="Creative Template">
+	<meta name="author" content="IG Design">
+	<meta name="keywords"
+		content="ig design, website, design, html5, css3, jquery, creative, clean, animated, portfolio, blog, one-page, multi-page, corporate, business,">
+	<meta property="og:title" content="Creative Template">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:width" content="470">
+	<meta property="og:image:height" content="246">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="E-learning  platform">
+
+
+	<!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#212121">
+	<meta name="msapplication-navbutton-color" content="#212121">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#212121">
+
+	<!-- Web Fonts 
+	================================================== -->
+	<link href="{% static '../css.css?family=Work+Sans:100,200,300,400,500,600,700,800,900' %}" rel="stylesheet">
+	<link
+		href="{% static '../css-1.css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' %}"
+		rel="stylesheet">
+	<link href="{% static '../css-2.css?family=Crimson+Text:400,400i,600,600i,700,700i' %}" rel="stylesheet">
+
+	<!-- CSS
+	================================================== -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/colors/color.css' %}">
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+</head>
+
+<body>
+	<div class="loader dark">
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0px" y="0px" width="24px" height="30px" viewbox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+			xml:space="preserve">
+			<rect x="0" y="0" width="4" height="10" fill="#333">
+				<animatetransform attributetype="xml" attributename="transform" type="translate" values="0 0; 0 20; 0 0"
+					begin="0" dur="0.6s" repeatcount="indefinite"></animatetransform>
+			</rect>
+			<rect x="10" y="0" width="4" height="10" fill="#333">
+				<animatetransform attributetype="xml" attributename="transform" type="translate" values="0 0; 0 20; 0 0"
+					begin="0.2s" dur="0.6s" repeatcount="indefinite"></animatetransform>
+			</rect>
+			<rect x="20" y="0" width="4" height="10" fill="#333">
+				<animatetransform attributetype="xml" attributename="transform" type="translate" values="0 0; 0 20; 0 0"
+					begin="0.4s" dur="0.6s" repeatcount="indefinite"></animatetransform>
+			</rect>
+		</svg>
+	</div>
+	<!-- Nav and Logo
+	================================================== -->
+	<div id="menu-wrap" class="menu-back cbp-af-header dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light mx-lg-0">
+						<a class="navbar-brand" href="index.html">
+							<img src="{% static 'img/logos/wazionlg.png' %}" alt="waxionschool">
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon">
+								<span class="menu-icon__line menu-icon__line-left"></span>
+								<span class="menu-icon__line"></span>
+								<span class="menu-icon__line menu-icon__line-right"></span>
+							</span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item">
+									<a class="nav-link" href="#concept">Concept</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#courses">Courses</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#subscription">subscription</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="#team">Team</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#faq">FAQ</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#contact">Contact</a>
+								</li>
+
+								<li class="nav-item mt-2">
+									<a class="btn btn-primary js-tilt" href="{% url 'accounts:register' %}"
+										role="button" data-tilt-perspective="300" data-tilt-speed="700"
+										data-tilt-max="24"><span>Register</span></a>
+								</li>
+								<li class="nav-item mt-2">
+									<a class="btn btn-primary js-tilt" href="{% url 'accounts:login' %}" role="button"
+										data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>Sign
+											in</span></a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Primary Page Layout
+	================================================== -->
+	<div class="section full-height height-auto-lg hide-over background-dark-blue-3">
+		<div class="hero-center-wrap relative-on-lg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 text-center text-lg-left parallax-fade-top align-self-center z-bigger">
+						<div>
+							<h2 class="text-white" style="font-size:25px;">Your one stop shop To E-learning, Crypto
+								& Crypto Signals, sports Forecast and Other Packages</h2>
+							<p class="mt-3 mb-4 pb-3 font-weight-normal text-white" style="font-size:16px;">We’ve
+								Trained hundreds of successful
+								Enterprenuers from the very basic up, Our courses are designed to guide you from the
+								basic.
+							</p>
+							<a class="btn btn-primary ml-lg-0 js-tilt mb-5 " href="{% url 'accounts:register' %}"
+								role="button" data-tilt-perspective="300" data-tilt-speed="700"
+								data-tilt-max="24"><span>Register
+									Now</span></a>
+
+							<a class="btn btn-primary ml-lg-0 js-tilt mb-5 " href="{% url 'accounts:login' %}"
+								role="button" data-tilt-perspective="300" data-tilt-speed="700"
+								data-tilt-max="24"><span>Sign In</span></a>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-lg-0 mb-3">
+						<div class="">
+							<img src="{% static 'img/logos/img.jpg' %}" alt="" class="img-fluid" style="">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ocean dark">
+			<div class="wave"></div>
+			<div class="wave"></div>
+		</div>
+		<div id="particles-js" class="min-height"></div>
+	</div>
+	<div class="section z-bigger background-gradient-dark" id="courses">
+		<div class="section " id="buy">
+			<div class="section">
+				<div class="container">
+					<div class="row">
+					</div>
+				</div>
+			</div>
+			<div class="section" id="roadmap">
+				<div class="background-parallax" style="background-image: url('img/parallax-dark.jpg')"
+					data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="title-wrap text-center">
+								<div class="back-title">Courses</div>
+								<h3 class="text-white">Most popular Courses</h3>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="customNavigation">
+								<a class="prev-roadmap dark"><i class="fa fa-angle-left"></i></a>
+								<a class="next-roadmap dark"><i class="fa fa-angle-right"></i></a>
+							</div>
+							{% for course in courses %}
+							<div id="owl-roadmap" class="owl-carousel owl-theme">
+								<div class="item dark">
+									<div class="roadmap-box background-dark-blue-2 roadmap-shadow">
+										<p class="mb-4 achieved"><span>{{course.title}}</span></p>
+										<img src="/media/{{ course.photo }}" alt="course image"
+											class="avatar-img rounded img-thumbnail img-fluid mx-auto d-block"
+											style="height:150px; width:180px;">
+										<p class="text-light">{{course.description|safe}}</p>
+									</div>
+								</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section padding-top padding-bottom-big background-dark-blue-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="title-wrap text-center">
+								<h3 class="text-white"> Bet Forecast </h3>
+							</div>
+						</div>
+						<div class="col-md-7" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
+							<div class=" text-center">
+								<h5 class="title-wrap text-white"> <u>Winning graph</u></h5>
+							</div>
+							<div class="line-chart">
+								<div class="aspect-ratio">
+									<canvas id="chart"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
+							<div class=" text-center">
+								<h5 class="title-wrap  text-white"><u>Most recent wins</u></h5>
+							</div>
+							<div class="line-chart">
+								<div class="aspect-ratio">
+									<table class = "table table-success table-small table-bordered table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Events</th>
+                                                <th scope="col">1</th>
+                                                <th scope="col">X</th>
+                                                <th scope="col">2</th>
+                                                <th scope="col">prediction</th>
+												<th scope="col">Win Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-success text-light">
+                                                <td >ManU - Chelsea</td>
+                                                <td>1.98</td>
+                                                <td>3.50</td>
+                                                <td>1.80</td>
+                                                <td>1.97</td>
+                                                <td class="badge badge-danger">Lost</td>
+                                            </tr>
+											<tr class="bg-success text-light">
+                                                <td >Arsenal - Barca</td>
+                                                <td>1.98</td>
+                                                <td>3.50</td>
+                                                <td>1.80</td>
+                                                <td>1.97</td>
+                                                <td class="badge badge-info">Won</td>
+                                            </tr>
+											<tr class="bg-success text-light">
+                                                <td >Roma - Ajax</td>
+                                                <td>1.98</td>
+                                                <td>3.50</td>
+                                                <td>1.80</td>
+                                                <td>1.97</td>
+                                                <td class="badge badge-info">Won</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 padding-bottom">
+				<div class="line-sep"></div>
+			</div>
+
+			<div class="section" id="subscription">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center ">
+							<div class="title-wrap text-center">
+								<h3 class="text-white">Our subscription Model</h3>
+							</div>
+						</div>
+						<div class="col-xl-4 col-sm-4 mt-4 mt-sm-0"
+							data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
+							<div class="table-sale background-color table-shadow">
+								<div class="table-line mt-4 mb-4"></div>
+								<h5 class="text-center text-light">Monthly <br>Crypto Signal <br>subscription</h5>
+								{% if learning_sub %}
+								{% for subscription in learning_sub %}
+								{% if subscription.membership_type == 'Medium' %}
+								<p class="text-center badge badge-info ">#{{subscription.price}}</p>
+								{% endif %}
+								{% endfor %}
+								{% endif %}
+
+								<div class="table-line mt-4 mb-4"></div>
+								<ol>
+									<li class="text-light">Hourly Update of Signals</li>
+									<li class="text-light">daily Blog Posts of Coins</li>
+								</ol>
+								<a class="btn btn-primary table-ver mt-5 js-tilt"
+									href="{% url 'signal_subscribe' %}?signal_sub_plan=Gold" role="button"
+									data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>subscribe
+										now</span></a>
+							</div>
+						</div>
+						<div class="col-xl-4 col-sm-4 mt-4 mt-sm-0"
+							data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">
+							<div class="table-sale background-color table-shadow">
+								<div class="table-line mt-4 mb-4"></div>
+								<h5 class="text-center text-light">Monthly <br>Betting Forecast <br>subscription</h5>
+								{% if betting_sub %}
+								{% for subscription in betting_sub %}
+								{% if subscription.membership_type == 'Silver' %}
+								<p class="text-center badge badge-info ">#{{subscription.price}}</p>
+								{% endif %}
+								{% endfor %}
+								{% endif %}
+								<div class="table-line mt-4 mb-4"></div>
+								<ol>
+									<li class="text-light">Hourly Update of Signals</li>
+									<li class="text-light">daily Blog Posts of Coins</li>
+								</ol>
+								<a class="btn btn-primary table-ver mt-5 js-tilt"
+									href="{% url 'betting_subscribe' %}?betting_sub_plan=Silver" role="button"
+									data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>subscribe
+										now</span></a>
+							</div>
+						</div>
+						<div class="col-xl-4 col-sm-4 mt-4 mt-sm-0"
+							data-scroll-reveal="enter bottom move 50px over 0.6s after 0.7s">
+							<div class="table-sale background-color table-shadow">
+								<div class="table-line mt-4 mb-4"></div>
+								<h5 class="text-center text-light">Other Amazing <br>E-Learning <br>subscription
+									Packages</h5>
+								{% if signal_sub %}
+								{% for subscription in signal_sub %}
+								{% if subscription.membership_type == 'Gold' %}
+								<p class="text-center badge badge-info">#{{subscription.price}}</p>
+								{% endif %}
+								{% endfor %}
+								{% endif %}
+								<div class="table-line mt-4 mb-4"></div>
+								<ol>
+									<li class="text-light">Hourly Update of Signals</li>
+									<li class="text-light">daily Blog Posts of Coins</li>
+								</ol>
+								<a class="btn btn-primary table-ver mt-5 js-tilt"
+									href="{% url 'subscribe' %}?sub_plan=Medium" role="button"
+									data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>subscribe
+										now</span></a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section padding-top background-dark-blue-2" id="concept">
+			<div class="container padding-bottom-big">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="title-wrap text-center">
+							<div class="back-title">concept</div>
+							<h3 class="text-white">We are the only platform <br>dedicated to making you rich.</h3>
+
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="concept-box">
+							<img class="mb-4" src="{% static 'img/con-1.svg' %}" alt="">
+							<h5 class="text-white">Crypto Signals as E-dey Hot</h5>
+							<p class="text-grey">We drop accurate and trusted on real time Crypto Currency Signals for
+								crypto coins, Airdrops and NFT's. Empowering you to know when to buy or sell coins</p>
+						</div>
+					</div>
+					<div class="col-md-4 mt-4 mt-md-0">
+						<div class="concept-box">
+							<img class="mb-4" src="{% static 'img/con-2.svg' %}" alt="">
+							<h5 class="text-white">Crypto Trading Tutoring and Mentorship</h5>
+							<p class="text-grey">Learn From Experienced traders and leverage on thier mastery for your
+								early and green start.</p>
+						</div>
+					</div>
+					<div class="col-md-4 mt-4 mt-md-0">
+						<div class="concept-box">
+							<img class="mb-4" src="{% static 'img/con-3.svg' %}" alt="">
+							<h5 class="text-white">Sports Betting Forecast</h5>
+							<p class="text-grey">Here is to keeping you a winner of all times. Get the Bet forecast of a
+								life time.
+							<ol class="text-light text-left">
+								<li>Correct Score predictions</li>
+								<li>Over and Under predictios</li>
+								<li>Corner predictions</li>
+								<li>etc</li>
+							</ol>
+
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section padding-top-bottom-big" id="team">
+		<div class="background-parallax" style="background-image: url({% static 'img/parallax-dark-1.jpg' %})"
+			data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="title-wrap text-center">
+						<div class="back-title">team</div>
+						<h3 class="text-white">Meet Our Team</h3>
+						<p class="color-pr">We have a Great team of creatives and resourceful Instructors. Together,
+							we help you into your journey of digital Currency discovery </p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+					<div class="team-wrap dark">
+						<a class="d-inline" data-toggle="modal" data-target="#team-modal-1">
+							<div class="team-img-wrap dark js-tilt" data-tilt-perspective="700" data-tilt-speed="700"
+								data-tilt-max="24">
+								<img src="{% static 'img/t5.jpg' %}" alt="">
+								<div class="team-img-mask"></div>
+							</div>
+						</a>
+						<h6>Ayoka Nnaemeka</h6>
+						<p>Officer & Founder</p>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-linkedin"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-twitter"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-facebook"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+					<div class="team-wrap dark">
+						<a class="d-inline" data-toggle="modal" data-target="#team-modal-2">
+							<div class="team-img-wrap dark js-tilt" data-tilt-perspective="700" data-tilt-speed="700"
+								data-tilt-max="24">
+								<img src="{% static 'img/t6.jpg' %}" alt="">
+								<div class="team-img-mask"></div>
+							</div>
+						</a>
+						<h6>Grant Nwachi</h6>
+						<p>Development manager</p>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-linkedin"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-twitter"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-facebook"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="team-wrap dark">
+						<a class="d-inline" data-toggle="modal" data-target="#team-modal-3">
+							<div class="team-img-wrap dark js-tilt" data-tilt-perspective="700" data-tilt-speed="700"
+								data-tilt-max="24">
+								<img src="{% static 'img/t7.jpg' %}" alt="">
+								<div class="team-img-mask"></div>
+							</div>
+						</a>
+						<h6>Ogbuji Nnaemeka</h6>
+						<p>Senior Instructor</p>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-linkedin"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-twitter"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-facebook"></i></a>
+						<a class="app-btn ml-3" href="#"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section padding-top-bottom-big  background-gradient-dark" id="faq">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="title-wrap text-center">
+						<div class="back-title">faq</div>
+						<h3 class="text-white">Questions and Answers</h3>
+						<p class="color-pr">Frequently Asked questions and answers. Please check The list questions
+							anwsers before sending a message. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="accordion" class="accordion-style">
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<a class="text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									What exactly is your token?
+								</a>
+							</div>
+
+							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+								data-parent="#accordion">
+								<div class="card-body">
+									<h6 class="text-white">What exactly is your token?</h6>
+									<p class="text-grey">Token is a community of people who want to mine
+										cryptocurrency profitably by combining resources to achieve savings on
+										equipment and ultra-low-cost electricity.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingTwo">
+								<a class="collapsed text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									What’s your overall strategy?
+								</a>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+								data-parent="#accordion">
+								<div class="card-body">
+									<h6 class="text-white">What’s your overall strategy?</h6>
+									<p class="text-grey">Our strategy is very straightforward: 1) raise funds, 2)
+										leverage those funds to procure the best mining equipment and other
+										necessities at the lowest possible prices, 3) set up the hardware in a
+										suitable facility; 4) start mining; 5) distribute what we mine.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingThree">
+								<a class="collapsed text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									What is bitcoin?
+								</a>
+							</div>
+							<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+								data-parent="#accordion">
+								<div class="card-body">
+									<h6 class="text-white">What is bitcoin?</h6>
+									<p class="text-grey">Bitcoin is a cryptocurrency and worldwide payment system.
+										It is the first decentralised digital currency, as the system works without
+										a central bank or single administrator.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-4 mt-md-0">
+					<div id="accordion-snd" class="accordion-style">
+						<div class="card">
+							<div class="card-header" id="headingFour">
+								<a class="text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+									What is blockchain?
+								</a>
+							</div>
+
+							<div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+								data-parent="#accordion-snd">
+								<div class="card-body">
+									<h6 class="text-white">What is blockchain?</h6>
+									<p class="text-grey">A blockchain is the technology on which cryptocurrency is
+										based. A blockchain is basically a continuously growing list of records
+										called blocks that are linked and secured using cryptography. </p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingFive">
+								<a class="collapsed text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+									What is cryptocurrency?
+								</a>
+							</div>
+							<div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+								data-parent="#accordion-snd">
+								<div class="card-body">
+									<h6 class="text-white">What is cryptocurrency?</h6>
+									<p class="text-grey">A cryptocurrency is a digital asset designed to work as a
+										medium of exchange that uses cryptography to secure its transactions, to
+										control the creation of additional units, and to verify the transfer of
+										assets.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingSix">
+								<a class="collapsed text-white background-dark-blue-2" data-toggle="collapse"
+									data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+									How much should I invest?
+								</a>
+							</div>
+							<div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+								data-parent="#accordion-snd">
+								<div class="card-body">
+									<h6 class="text-white">How much should I invest?</h6>
+									<p class="text-grey">Cryptocurrency mining is not without risk, and we are open
+										and candid about those risks in our White Paper.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section padding-top-bottom-big" id="contact">
+		<div class="background-parallax" style="background-image: url({% static 'img/parallax-dark-2.jpg' %})"
+			data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="title-wrap text-center">
+						<div class="back-title">contact</div>
+						<h3 class="text-white">Want to make an enquiry?</h3>
+						<p class="color-pr">Get in touch.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-3">
+					<div class="contact-det text-center">
+						<img src="{% static 'img/contact-1.svg' %}" alt="">
+						<h6 class="text-white">Phone</h6>
+						<p class="text-grey">+(234)8000000001</p>
+					</div>
+				</div>
+				<div class="col-md-3 mt-4 mt-md-0">
+					<div class="contact-det text-center">
+						<img src="{% static 'img/contact-2.svg' %}" alt="">
+						<h6 class="text-white">Email</h6>
+						<p class="text-grey">waxilearn.edu.mail.com</p>
+					</div>
+				</div>
+				<div class="col-md-3 mt-4 mt-md-0">
+					<div class="contact-det text-center">
+						<img src="{% static 'img/contact-3.svg' %}" alt="">
+						<h6 class="text-white">Address</h6>
+						<p class="text-grey">1093 Nigeria {{text}}</p>
+
+					</div>
+				</div>
+			</div>
+			<form id="contact-form" class="mt-5" method="post" action="{% url 'contact'%}" role="form">
+				{% csrf_token %}
+
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="messages text-center"></div>
+					</div>
+				</div>
+				<div class="controls">
+					<div class="row justify-content-center">
+						<div class="col-md-4">
+							<div class="form-group text-center">
+								{{contact_form.first_name}}
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+						<div class="col-md-4 mt-3 mt-md-0">
+							<div class="form-group text-center">
+								{{contact_form.last_name}}
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-md-4 mt-3">
+							<div class="form-group text-center">
+								{{contact_form.email}}
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+						<div class="col-md-4 mt-3">
+							<div class="form-group text-center">
+								{{contact_form.phone}}
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+						<div class="col-md-8 mt-3">
+							<div class="form-group text-center">
+								{{contact_form.subject}}
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-md-8 mt-3">
+							<div class="form-group text-center">
+								{{contact_form.message}}
+								<div class="help-block with-errors textarea-error"></div>
+							</div>
+						</div>
+						<div class="col-md-8 mt-3 text-center">
+							<input type="submit" class="btn btn-primary btn-send text-center" value="Send message">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="section padding-top-big">
+		<div class="background-parallax" style="background-image: url( {% static 'img/parallax-dark-3.jpg' %})"
+			data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+				<div class="col-lg-4">
+					<h6 class="text-white mb-4">Stay tunned:</h6>
+					<div class="suscribe">
+						<input class="form-control text-left" placeholder="Enter your email" type="text" name="name">
+						<button type="submit" class="btn btn-primary m-0 js-tilt" data-tilt-perspective="300"
+							data-tilt-speed="700" data-tilt-max="24"><span>subscribe</span></button>
+					</div>
+					<p class="text-left text-white mb-0"><small>* we promise that we won´t spam you, never.</small>
+					</p>
+				</div>
+				<div class="col-lg-5 mt-4">
+					<ul class="footer-list">
+						<li class="text-left"><a href="#">concept</a></li>
+						<li class="text-left"><a href="#">roadmap</a></li>
+						<li class="text-left"><a href="#">buy tokens</a></li>
+						<li class="text-left"><a href="#">team</a></li>
+						<li class="text-left"><a href="#">FAQ</a></li>
+						<li class="text-left"><a href="#">download app</a></li>
+						<li class="text-left"><a href="#">contact</a></li>
+						<li class="text-left"><a href="#">news</a></li>
+						<li class="text-left"><a href="#">overall output</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="section py-4 background-dark-blue-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 footer text-center text-lg-left">
+						<p>Copyright © {% now "Y" %}, powered by Coeus & Lustervs</p>
+					</div>
+					<div class="col-lg-6 footer mt-4 mr-auto mt-lg-0 mr-lg-0 text-center text-lg-right">
+						<a class="app-btn mx-2 mr-lg-3" href="#"><i class="fa fa-twitter"></i></a>
+						<a class="app-btn mx-2 mr-lg-3" href="#"><i class="fa fa-linkedin"></i></a>
+						<a class="app-btn mx-2 mr-lg-3" href="#"><i class="fa fa-facebook"></i></a>
+						<a class="app-btn mx-2 mr-lg-0" href="#"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="scroll-to-top">to top</div>
+
+
+
+
+	<!-- JAVASCRIPT
+    ================================================== -->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+	<script src="{% static 'js/chart-custom.js' %}"></script>
+	<script src="{% static 'js/particles-dark.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+	<!-- End Document
+================================================== -->
+</body>
+
+</html>

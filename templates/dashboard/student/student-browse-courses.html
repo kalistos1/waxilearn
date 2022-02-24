@@ -1,0 +1,110 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item active">Courses</li>
+                </ol>
+                <form method="post" action="{% url 'onlinecourses:search_result' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-8">
+                            {{ form.title }}
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary"> Search course </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-info col-md-12 col-lg-12">
+                            <hr>
+                            <strong>Info!</strong>
+                            <span>You have {{count}} courses Available</span>
+                            <hr>
+                        </div>
+    
+                    </div>
+    
+                </form>
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
+                        <h1 class="h2">Courses</h1>
+                    </div>
+                    <div class="media-right">
+                        <div class="btn-group btn-group-sm">
+                            <a href="#" class="btn btn-white active"><i class="material-icons">list</i></a>
+                            <a href="#" class="btn btn-white"><i class="material-icons">dashboard</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="card-columns">
+                    {% for course in page.object_list %}
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="card-title mb-0"><a href="{% url 'onlinecourses:load_course'  course.id  %}">{{ course.title }}</a></h4>
+                            <div class="rating">
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star_border</i>
+                            </div>
+                            <p class=""> Eligibility :{{course.eligibility|safe}}</p>
+                        </div>
+                        <a href="{% url 'onlinecourses:load_course'  course.id  %}">
+                            <img src="/media/{{ course.photo }}" alt="Card image cap" class="mx-auto d-block img-fluid thumbnail"  style="height:200px;" >
+                        </a>
+                       
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if page.has_other_pages %}
+                <ul class="pagination">
+                    {% if page.has_previous %}
+                    <li class="page-item ">
+                        <a href="?page={{page.previous_page_number}}" class="page-link">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&laquo;</a>
+                    </li>
+                    {% endif %}
+                    {% for i in page.paginator.page_range %}
+                    {% if page.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item ">
+                        <a class="page-link" href="?page={{i}}">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page.has_next %}
+                    <li class="page-item ">
+                        <a href="?page={{page.next_page_number}}" class="page-link">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% include '../../partials/_student_sidebar.html' %}  
+    </div>
+</div>
+{% endblock %}

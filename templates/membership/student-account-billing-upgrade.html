@@ -1,0 +1,335 @@
+﻿{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container p-0">
+                <div class="row m-0">
+                    <div class="col-lg container-fluid page__container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+                            <li class="breadcrumb-item active">Edit Account</li>
+                        </ol>
+
+                        <h1 class="h2">Upgrade Account</h1>
+
+                        <!-- online courses section -->
+                        <div class="row card-group-row mb-40pt">
+
+                            {% if user_membership %}
+
+                            {% for membership in user_membership %}
+
+                            {% if membership.membership.membership_type == "Medium" %}
+
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+
+                                <div class="card card-group-row__card text-center o-hidden card--raised navbar-shadow">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <h4 class="mb-8pt">Hey {{user.username}}</h4>
+
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+
+                                        </p>
+                                        <p class="lh-1 text-muted mb-0"><small>you are on the </small> <span
+                                                class="text-success"> {{membership.membership.membership_type}} </span>
+                                            plan</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-outline-secondary disabled">Current
+                                            plan</a>
+                                    </div>
+                                    {% for subscription in user_subscription %}
+                                    {% if user.id == subscription.user_membership.user.id %}
+                                    <h5 class="text-danger">Your subscription Expires On {{subscription.expires_in}}
+                                    </h5>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% elif membership.membership.membership_type == "Free" %}
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt">you are on Free Learning Subscription of </h4>
+                                            <h3 class="text-success"> #{{membership.membership.price}}</h3>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-default">Current subscription</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt"> </h4>
+                                            <h3 class="text-success"> </h3>
+                                            <p class="text-black-70">Click to Upgrade to our Monthly plan
+                                            </p>
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+                                            <span
+                                                class="h1 m-0 font-weight-normal">#{{get_medium_membership.price}}</span>
+                                            <span class="h4 m-0 font-weight-normal">/month</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{% url 'subscribe' %}?sub_plan=Medium" class="btn btn-success">Get
+                                            started</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                        </div>
+
+                        <!-- signal subscription section-->
+                        <div class="row card-group-row mb-40pt">
+
+                            {% if new_signal_membership %}
+
+                            {% for membership in new_signal_membership %}
+
+                            {% if membership.signal_membership.membership_type == "Gold" %}
+
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+
+                                <div class="card card-group-row__card text-center o-hidden card--raised navbar-shadow">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <h4 class="mb-8pt">Hey {{user.username}}</h4>
+
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+
+                                        </p>
+                                        <p class="lh-1 text-muted mb-0"><small>you are on the </small> <span
+                                                class="text-success">
+                                                {{membership.signal_membership.membership_type}} </span>
+                                            Subscription plan for Signals</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{% url 'subscribe' %}?sub_plan=Medium"
+                                            class="btn btn-outline-secondary disabled">Current
+                                            plan</a>
+                                    </div>
+                                    {% for subscription in new_signal_subscription %}
+                                    {% if user.id == subscription.signal_user_membership.user.id %}
+                                    <h5 class="text-danger">Your subscription Expires On {{subscription.expires_in}}
+                                    </h5>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% elif membership.signal_membership.membership_type == "Free" %}
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt">you are on Free Signals Subscription of </h4>
+                                            <h3 class="text-success"> #{{membership.signal_membership.price}}
+                                            </h3>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-default">Current subscription</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt"> </h4>
+                                            <h3 class="text-success"> </h3>
+                                            <p class="text-black-70">Click to Upgrade to our Monthly Gold plan
+                                            </p>
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+                                            <span class="h1 m-0 font-weight-normal">#{{get_gold_membership.price}}</span>
+                                            <span class="h4 m-0 font-weight-normal">/month</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{% url 'signal_subscribe' %}?signal_sub_plan=Gold "
+                                            class="btn btn-success">Get
+                                            started</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+
+                        </div>
+                        <!-- betting code subscription section -->
+                        <div class="row card-group-row mb-40pt">
+
+                            {% if new_betting_membership %}
+
+                            {% for membership in new_betting_membership %}
+
+                            {% if membership.betting_membership.membership_type == "Silver" %}
+
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+
+                                <div class="card card-group-row__card text-center o-hidden card--raised navbar-shadow">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <h4 class="mb-8pt">Hey {{user.username}}</h4>
+
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+
+                                        </p>
+                                        <p class="lh-1 text-muted mb-0"><small>you are on the </small> <span
+                                                class="text-success"> {{membership.betting_membership.membership_type}} </span>
+                                            plan</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-outline-secondary disabled">Current
+                                            plan</a>
+                                    </div>
+                                    {% for subscription in user_subscription %}
+                                    {% if user.id == subscription.user_membership.user.id %}
+                                    <h5 class="text-danger">Your subscription Expires On {{subscription.expires_in}}
+                                    </h5>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% elif membership.betting_membership.membership_type == "Free" %}
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt">you are on Free sport  Subscription of </h4>
+                                            <h3 class="text-success"> #{{membership.betting_membership.price}}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-default">Current subscription</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6 card-group-row__col">
+                                <div class="card card-group-row__card text-center o-hidden">
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 mb-16pt">
+                                            <span
+                                                class="w-64 h-64 icon-holder icon-holder--outline-success rounded-circle d-inline-flex mb-16pt">
+                                                <i class="material-icons">group</i>
+                                            </span>
+                                            <h4 class="mb-8pt"> </h4>
+                                            <h3 class="text-success"> </h3>
+                                            <p class="text-black-70">Click to Upgrade to our Monthly Silver Sport plan
+                                            </p>
+                                        </div>
+                                        <p class="d-flex justify-content-center align-items-center m-0">
+                                            <span
+                                                class="h1 m-0 font-weight-normal">#{{get_silver_membership.price}}</span>
+                                            <span class="h4 m-0 font-weight-normal">/month</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{% url 'betting_subscribe' %}?betting_sub_plan=Silver" class="btn btn-success">Get
+                                            started</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+
+
+                    </div>
+                    <div id="page-nav" class="col-lg-auto page-nav">
+                        <div data-perfect-scrollbar="">
+                            <div class="page-section pt-lg-32pt">
+                                <ul class="nav page-nav__menu">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Subscription</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Payment History</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- navbar-->
+        {% include '../partials/_student_sidebar.html' %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Signup</title>
+
+    <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+    <meta name="robots" content="noindex">
+
+    <!-- Custom Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="{% static 'assets/vendor/perfect-scrollbar.css' %}" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="{% static 'assets/css/material-icons.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="{% static 'assets/css/fontawesome.css' %}" rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="{% static 'assets/vendor/spinkit.css' %}" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="{% static 'assets/css/app.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="login">
+
+    <div class="d-flex align-items-center" style="min-height: 100vh">
+        <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+            <div class="text-center mt-5 mb-1">
+                <div class="">
+                    <img src="{% static 'img/logos/wazionlg.png' %}"  style="width:200px;"
+                    class="img-fluid mx-auto d-block"
+                        alt="Waxion school" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light">
+                <a href="student-dashboard.html" class="navbar-brand m-0">Waxion School</a>
+            </div>
+            <div class="card navbar-shadow">
+                <div class="card-header text-center">
+                    <h4 class="card-title">Sign Up</h4>
+                    <p class="card-subtitle">Create a new account</p>
+                </div>
+                <div class="card-body">
+                    <p>{% include 'partials/_messages.html'%}</p>
+                    <form action="{% url 'accounts:register' %}" novalidate method="post">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                            {% for field in form %}
+                            {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <label class="form-label" for="name">First Name:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.first_name }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="name">Last Name:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.last_name }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email address:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.email }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-envelope"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="name">User Name:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.username }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.password1 }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-key"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="password2">Password:</label>
+                            <div class="input-group input-group-merge">
+                                {{ form.password2 }}
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-key"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                {{ form.is_student }} <i style="margin-left:3%;"> As student</i>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
+                        <div class="form-group text-center mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input id="terms" type="checkbox" class="custom-control-input" checked required="">
+                                <label for="terms" class="custom-control-label text-black-70">I agree to the <a href="#"
+                                        class="text-black-70" style="text-decoration: underline;">Terms of
+                                        Use</a></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center text-black-50">Already signed up? <a
+                        href="{% url 'accounts:login' %}">Login</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/vendor/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap.min.js' %}"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="{% static 'assets/vendor/perfect-scrollbar.min.js' %}"></script>
+
+    <!-- MDK -->
+    <script src="{% static 'assets/vendor/dom-factory.js' %}"></script>
+    <script src="{% static 'assets/vendor/material-design-kit.js' %}"></script>
+
+    <!-- App JS -->
+    <script src="{% static 'assets/js/app.js' %}"></script>
+
+    <!-- Highlight.js -->
+    <script src="{% static 'assets/js/hljs.js' %}"></script>
+
+    <!-- App Settings (safe to remove) -->
+    <script src="{% static 'assets/js/app-settings.js' %}"></script>
+
+</body>
+
+</html>

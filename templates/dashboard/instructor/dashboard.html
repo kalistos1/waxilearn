@@ -1,0 +1,504 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <h1 class="h2">Dashboard</h1>
+                <p>{% include 'partials/_messages.html'%}</p>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Available subscription Types</h4>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Student/Learning Subscriptions</h5>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for subscription in student_membership_types %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href="#" class="text-body"><strong>
+                                                        {{subscription.membership_type}} </span></strong></a>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{subscription.price}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">{{subscription.duration}}
+                                                        {{subscription.duration_period}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span>
+                                                        <a href="#" class="dropdown-toggle text-muted"
+                                                            data-caret="false" data-toggle="dropdown">
+                                                            <i class="material-icons">more_vert</i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{% url 'accounts:edit_student_sub_type' pk=subscription.pk %}">Edit
+                                                            </a>
+                                                            <div class="dropdown-divider"></div>
+
+                                                            <a class="dropdown-item text-danger"
+                                                                href="{% url 'accounts:delete_student_sub_type' pk=subscription.pk %}">Delete
+                                                                course</a>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;"> Crypto Signals Subscription Types
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for subscription in signals_membership_types %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href="#" class="text-body"><strong>
+                                                        {{subscription.membership_type}} </span></strong></a>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{subscription.price}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">{{subscription.duration}}
+                                                        {{subscription.duration_period}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span>
+                                                        <a href="#" class="dropdown-toggle text-muted"
+                                                            data-caret="false" data-toggle="dropdown">
+                                                            <i class="material-icons">more_vert</i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{% url 'accounts:edit_signal_sub_type' pk=subscription.pk %}">Edit
+                                                            </a>
+                                                            <div class="dropdown-divider"></div>
+
+                                                            <a class="dropdown-item text-danger"
+                                                                href="{% url 'accounts:delete_signal_sub_type' pk=subscription.pk %}">Delete
+                                                                course</a>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Sports Forecast Subscription Types
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for subscription in betting_membership_types %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href="#" class="text-body"><strong>
+                                                        {{subscription.membership_type}} </span></strong></a>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{subscription.price}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">{{subscription.duration}}
+                                                        {{subscription.duration_period}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span>
+                                                        <a href="#" class="dropdown-toggle text-muted"
+                                                            data-caret="false" data-toggle="dropdown">
+                                                            <i class="material-icons">more_vert</i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{% url 'accounts:edit_betting_sub_type' pk=subscription.pk %}">Edit
+                                                            </a>
+                                                            <div class="dropdown-divider"></div>
+
+                                                            <a class="dropdown-item text-danger"
+                                                                href="{% url 'accounts:delete_betting_sub_type' pk=subscription.pk %}">Delete
+                                                                course</a>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">list of courses <span
+                                            class="text-success">({{total_courses}})</h5>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for course in courses %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href=""
+                                                    class="text-body"><strong>
+                                                        {{course.title}} </span></strong></a>
+                                            </div>
+                                            <!--
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{course.price}}</span>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">list of Signals <span
+                                            class="text-success">({{total_crypto_signal}})</h5>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for signal in crypto_signal %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href=""
+                                                    class="text-body"><strong>
+                                                        {{signal.title}} </span></strong></a>
+                                            </div>
+                                            <!--
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{course.price}}</span>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">list of Bet Forecasts <span
+                                            class="text-success">({{total_bet_forecast}})</h5>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-fit mb-0">
+                                    {% for forecast in bet_forecast %}
+                                    <li class="list-group-item">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <a href=""
+                                                    class="text-body"><strong>
+                                                        {{forecast.title}} </span></strong></a>
+                                            </div>
+                                            <!--
+                                            <div class="media-right">
+                                                <div class="text-center">
+                                                    <span
+                                                        class="badge badge-pill badge-primary">#{{course.price}}</span>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Total Users <span
+                                            class="text-success">
+                                            ({{count_total_user|add:"-1"}})</span></h5>
+                                    <p class="card-subtitle"></p>
+                                </div>
+                                <a class="btn btn-sm btn-info" href="#">Registration Date</a>
+                            </div>
+                            <ul class="list-group list-group-fit mb-0">
+                                {% for user in list_of_user %}
+                                {% if user.is_student %}
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a href="instructor-course-edit.html"
+                                                class="text-body"><strong>{{user.first_name}}
+                                                    {{user.last_name}}</strong></a>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-warning">
+                                                    {{user.date_joined}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-danger"><a
+                                                        href="{% url 'accounts:delete_user' pk=user.pk %}"
+                                                        class="text-light">Delete </a> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Learning Subscribers <span
+                                            class="text-success">
+                                            ({{active_learning_subscription.count}})</span></h5>
+                                    <p class="card-subtitle"></p>
+                                </div>
+                                <a class="btn btn-sm btn-info" href="#">Expiration Date</a>
+                            </div>
+                            <ul class="list-group list-group-fit mb-0">
+                                {% for subscriber in active_learning_subscription %}
+                                {% if subscriber.user_membership.user.username != "kalistos" %}
+
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a href="#"
+                                                class="text-body"><strong>{{subscriber.user_membership.user.last_name}}
+                                                    {{subscriber.user_membership.user.first_name}}</strong></a>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-warning">
+                                                    {{subscriber.expires_in}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-success">
+                                                    on {{subscriber.user_membership.membership}} subscription</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-danger">
+                                                    <a href="{% url 'accounts:delete_learning_subscriber' id=subscriber.user_membership.id %}"
+                                                        class="text-light">Deactivate </a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {%endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Sport Betting Forcast Subscribers
+                                        <span class="text-success">
+                                            ({{active_bet_forecast_subscription.count}})</span>
+                                    </h5>
+                                    <p class="card-subtitle"></p>
+                                </div>
+                                <a class="btn btn-sm btn-primary" href="#">Expiration Date</a>
+                            </div>
+                            <ul class="list-group list-group-fit mb-0">
+                                {% for subscriber in active_bet_forecast_subscription %}
+                                {% if subscriber.betting_user_membership.user.is_student %}
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a href="#"
+                                                class="text-body"><strong>{{subscriber.betting_user_membership.user.last_name}}
+                                                    {{subscriber.betting_user_membership.user.first_name}}</strong></a>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-warning">
+                                                    {{subscriber.expires_in}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-success">
+                                                    on {{subscriber.betting_user_membership.betting_membership}}
+                                                    subscription</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-danger">
+                                                    <a href="{% url 'accounts:delete_bet_subscriber' id=subscriber.betting_user_membership.id %}"
+                                                        class="text-light">Deactivate </a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="flex">
+                                    <h5 class="card-title" style="font-weight:600;">Crypto Signal Subscribers <span
+                                            class="text-success">
+                                            ({{active_crypto_signal_subscription.count}})</span></h5>
+                                    <p class="card-subtitle"></p>
+                                </div>
+                                <a class="btn btn-sm btn-primary" href="#">Registration Date</a>
+                            </div>
+                            <ul class="list-group list-group-fit mb-0">
+                                {% for subscriber in active_crypto_signal_subscription %}
+                                {% if subscriber.signal_user_membership.user.is_student %}
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a href="#"
+                                                class="text-body"><strong>{{subscriber.signal_user_membership.user.last_name}}
+                                                    {{subscriber.signal_user_membership.user.first_name}}</strong></a>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-warning">
+                                                    {{subscriber.expires_in}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-success">
+                                                    on {{subscriber.signal_user_membership.signal_membership}}
+                                                    subscription</span>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="media-right">
+                                            <div class="text-center">
+                                                <span class="badge badge-pill badge-danger">
+                                                    <a href="{% url 'accounts:delete_signal_subscriber' id=subscriber.signal_user_membership.id %}"
+                                                        class="text-light">Deactivate </a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- sidebar here -->
+        {% include '../../partials/_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

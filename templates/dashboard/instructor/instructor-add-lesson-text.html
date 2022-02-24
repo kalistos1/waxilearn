@@ -1,0 +1,61 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Home</a></li>
+                    <li class="breadcrumb-item"><a href="">course Manager</a></li>
+                    <li class="breadcrumb-item active">add text</li>
+                </ol>
+                <h1 class="h2">Add Lesson text</h1>
+                <div class="card">
+                    <div class="card-header">
+                       
+                    </div>
+                    <div class="card-body">
+                       
+                        <h4>Add the Text for This lesson</h4>
+                        <p>{% include 'partials/_messages.html'%}</p>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{form.media}}
+                            {{form.as_p}}
+                            <div class="form-group row mb-0">
+                                <div class="col-sm-9 offset-sm-3">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- App Settings FAB -->
+        {% include '../../partials/_sidebar.html' %}       
+    </div>
+</div>
+
+
+
+
+
+<!-- Vendor JS -->
+<script src="{% static 'assets/vendor/jquery.nestable.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.bootstrap-touchspin.js' %}"></script>
+
+<!-- Initialize -->
+<script src="{% static 'assets/js/nestable.js' %}"></script>
+<script src="{% static 'assets/js/touchspin.js' %}"></script>
+
+{% endblock %}

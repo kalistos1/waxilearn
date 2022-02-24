@@ -1,0 +1,90 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container p-0">
+                <div class="row m-0">
+                    <div class="col-lg container-fluid page__container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Edit Account</li>
+                        </ol>
+                        <h1 class="h2">upload &amp; Photo</h1>
+                        <p>{% include 'partials/_messages.html'%}</p>
+                        <p>{{error}}</p>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <div class="card">
+                            <div class="list-group list-group-fit">
+                                <div class="list-group-item">
+                                    <div role="group" aria-labelledby="label-avatar" class="m-0 form-group">
+                                        <div class="form-row">
+                                            <label id="label-avatar" for="avatar"
+                                                class="col-md-3 col-form-label form-label">Your photo</label>
+                                            <div class="col-md-9">
+                                                <div class="media align-items-center">
+                                                    <div class="d-flex mr-3 align-self-center">
+                                                        <span class="avatar avatar-lg">
+                                                            <span class="avatar-title rounded">
+                                                                
+                                                                <i class="material-icons">photo</i>
+                                                           
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="custom-file b-form-file">
+                                                           {{form}}
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-nav__content">
+                                    <button type="submit" class="btn btn-success mx-auto d-block mt-3 mb-3">Save Changes</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                    </div>
+                    <div id="page-nav" class="col-lg-auto page-nav">
+                        <div data-perfect-scrollbar>
+                            <div class="page-section pt-lg-32pt">
+                                <ul class="nav page-nav__menu">
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:student_edit_profile' %}" class="nav-link ">Basic
+                                            Information</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:change_login_details'%}" class="nav-link ">Change
+                                            Login Details
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:upload_profile_photo'%}"
+                                            class="nav-link active">Change profile picture
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

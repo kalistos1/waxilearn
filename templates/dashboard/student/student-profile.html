@@ -1,0 +1,144 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page pt-0">
+            {% if user %}
+            <div class="bg-primary mdk-box js-mdk-box mb-0" style="height: 192px;"
+                data-effects="parallax-background blend-background">
+                <div class="mdk-box__bg">
+                    <div class="mdk-box__bg-front"
+                        style="background-image: url({% static 'assets/images/1280_rsz_aman-dhakal-205796-unsplash.jpg' %}); background-position: center;">
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid page__container d-flex align-items-end position-relative mb-4">
+                <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0">
+                   
+                    <img src="/media/{{user.profile.photo }}" alt="avatar"
+                        class="avatar-img rounded-circle border-3" >  
+                </div>
+                <div> 
+                    <i class="btn  btn-success  btn-sm" style="position:relative; z-index:100;"><a href="{% url 'accounts:upload_profile_photo'%}" class="text-light"> edit</a></i>
+                </div>
+                <ul class="nav nav-tabs-links flex" style="margin-left: 265px;">
+                    <li class="nav-item">
+                        <a href="student-profile.html" class="nav-link active">Courses</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a href="student-profile-posts.html" class="nav-link">Posts</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+
+            <div class="container-fluid page__container mb-3">
+                <div class="row flex-sm-nowrap">
+                    <div class="col-sm-auto mb-3 mb-sm-0" style="width: 265px;">
+                        <h1 class="h2 mb-1">{{user.first_name}} {{user.last_name}}</h1>
+                        <p class="d-flex align-items-center mb-4">
+                            <a href="" class="btn btn-sm btn-success mr-2">Email: {{user.email}}</a>
+                        </p>
+                        <div class="text-muted d-flex align-items-center mb-2">
+                            <i class="material-icons mr-1">account_box</i>
+                            <div class="flex">Joined: {{user.date_joined|date:"D, d M, Y"}}</div>
+                        </div>
+                        <div class="text-muted d-flex align-items-center mb-4">
+                            <i class="material-icons mr-1">location_on:</i>
+                            <div class="flex">{{user.profile.country}}</div>
+                        </div>
+                        <div class="text-muted d-flex align-items-center mb-4">
+                            <i class="material-icons mr-1">verified_user:</i>
+                            <div class="flex">{{user.profile.sex}}</div>
+                        </div>
+                        <div class="text-muted d-flex align-items-center mb-4">
+                            <i class="material-icons mr-1">contact_phone:</i>
+                            <div class="flex">{{user.profile.phone}}</div>
+                        </div>
+
+                        <h4>About me:</h4>
+                        <p class="text-black-70 measure-paragraph">{{user.profile.bio}}</p>
+                        <div>
+                            <button class="btn btn-success form-control"><a href="{% url 'accounts:student_edit_profile' %}" class="text-light"> Edit Profile</a></button>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm">
+                        <!-- <div class="flex search-form search-form--light mb-4">
+  <button class="btn pr-3" type="button" role="button"><i class="material-icons">search</i></button>
+  <input type="text" class="form-control" placeholder="Search" id="searchSample02">
+</div> -->
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <a href="{% url 'onlinecourses:courses_all'%}" class="mr-3">
+                                        <img src="{% static 'img/courses.png' %}" width="100" alt=""
+                                            class="rounded">
+                                    </a>
+                                    <div class="flex">
+                                        <h5 class="card-title mb-0"><a href="{% url 'onlinecourses:courses_all'%}">Take a look at the List of Coursed Available</a></h5>
+                                        <span class="badge badge-primary">Courses</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <a href="{% url 'onlinecourses:courses_me' %}" class="mr-3">
+                                        <img src="{% static 'img/elearning.png' %}" alt="" class="rounded"
+                                            width="100">
+                                    </a>
+                                    <div class="flex">
+                                        <h5 class="card-title mb-0"><a href="{% url 'onlinecourses:courses_me' %}">See all the courses you have Enrolled in</a></h5>
+                                        <span class="badge badge-success">your courses</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <a href="{% url 'student_all_signal' %}" class="mr-3">
+                                        <img src="{% static 'img/cryptocurrency-signals.jpeg' %}" alt="" class="rounded"
+                                            width="100">
+                                    </a>
+                                    <div class="flex">
+                                        <h5 class="card-title mb-0"><a href="{% url 'student_all_signal' %}">Take a look at all Avilable Bet Forecast for you</a></h5>
+                                        <span class="badge badge-danger">Bet Forecast</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <a href="{% url 'all_forecast' %}" class="mr-3">
+                                        <img src="{% static 'img/betforecast.jpg' %}" alt="" class="rounded"
+                                            width="100">
+                                    </a>
+                                    <div class="flex">
+                                        <h5 class="card-title mb-0"><a href="{% url 'all_forecast' %}">Take at look Availabe Crypto Signals for you</a></h5>
+                                        <span class="badge badge-warning">Crypto Signals</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       {% endif %}
+        </div>
+        <!--side bar-->
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

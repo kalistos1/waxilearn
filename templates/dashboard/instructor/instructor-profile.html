@@ -1,0 +1,69 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page  ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ol>
+
+                <div class="text-center">
+                    <a href="#"><img src="/media/{{user.profile.photo }}" alt="" class="rounded-circle"></a>
+                    <h1 class="h2 mb-0 mt-1">{{user.first_name}} {{user.last_name}}</h1>
+                    <p class="lead text-muted mb-0">{{user.profile.country}}</p>
+                    <div class="badge badge-primary ">INSTRUCTOR</div>
+                    <hr>
+                    <h5 class="text-muted mb-1">Instructor Rating</h5>
+                    <div class="rating">
+                        <i class="material-icons text-success">star</i>
+                        <i class="material-icons text-success">star</i>
+                        <i class="material-icons text-success">star</i>
+                        <i class="material-icons text-muted-light">star_border</i>
+                        <i class="material-icons text-muted-light">star_border</i>
+                    </div>
+                </div>
+                <hr>
+                <h4>Courses by {{user.username}}</h4>
+
+                {% if user %}
+                {% for course in courses %}
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media align-items-center">
+                            <div class="media-left">
+                                <a href="instructor-take-course.html">
+                                    <img src="/media/{{course.photo }}" alt="Card image cap" width="100"
+                                        class="rounded">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="card-title mb-0"><a href="instructor-take-course.html">{{course.title}}</a></h4>
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+                {% endif %}
+
+
+            </div>
+        </div>
+        {% include '../../partials/_sidebar.html' %}
+    </div>
+</div>
+
+{% endblock %}

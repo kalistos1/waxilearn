@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>{% block title %} {% endblock %}</title>
+
+      <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+      <meta name="robots" content="noindex">
+
+      <!-- Custom Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
+            rel="stylesheet">
+
+      <!-- Perfect Scrollbar -->
+      <link type="text/css" href="{% static 'assets/vendor/perfect-scrollbar.css' %}" rel="stylesheet">
+
+      <!-- Material Design Icons -->
+      <link type="text/css" href="{% static 'assets/css/material-icons.css' %}" rel="stylesheet">
+
+      <!-- Font Awesome Icons -->
+      <link type="text/css" href="{% static 'assets/css/fontawesome.css' %}" rel="stylesheet">
+
+      <!-- Preloader -->
+      <link type="text/css" href="{% static 'assets/vendor/spinkit.css' %}" rel="stylesheet">
+
+      <!-- App CSS -->
+      <link type="text/css" href="{% static 'assets/css/app.css' %}" rel="stylesheet">
+
+      <!-- Vendor Dropzone CSS -->
+      <link rel="stylesheet" href="{% static 'assets/vendor/dropzone.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/dropzone.css' %}">
+
+      <!-- Vendor FancyTree CSS -->
+      <link rel="stylesheet" href="{% static 'fontawesome/4.5.0/css/font-awesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/fancytree.css' %}">
+      <style>
+            .django-ckeditor-widget {
+                  width: 100%;
+            }
+      </style>
+</head>
+
+<body class=" layout-fluid">
+
+      <div class="preloader">
+            <div class="sk-chase">
+                  <div class="sk-chase-dot"></div>
+                  <div class="sk-chase-dot"></div>
+                  <div class="sk-chase-dot"></div>
+                  <div class="sk-chase-dot"></div>
+                  <div class="sk-chase-dot"></div>
+                  <div class="sk-chase-dot"></div>
+            </div>
+      </div>
+
+      <!-- Header Layout -->
+      <div class="mdk-header-layout js-mdk-header-layout">
+            {% include 'partials/_header.html' %}
+          
+            {% block content %}
+
+            {% endblock %}
+      </div>
+
+      <!-- jQuery -->
+      <script src="{% static 'assets/vendor/jquery.min.js' %}"></script>
+
+      <!-- Bootstrap -->
+      <script src="{% static 'assets/vendor/popper.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/bootstrap.min.js' %}"></script>
+
+      <!-- Perfect Scrollbar -->
+      <script src="{% static 'assets/vendor/perfect-scrollbar.min.js' %}"></script>
+
+      <!-- MDK -->
+      <script src="{% static 'assets/vendor/dom-factory.js' %}"></script>
+      <script src="{% static 'assets/vendor/material-design-kit.js' %}"></script>
+
+      <!-- App JS -->
+      <script src="{% static 'assets/js/app.js' %}"></script>
+
+      <!-- Highlight.js -->
+      <script src="{% static 'assets/js/hljs.js' %}"></script>
+
+
+
+      <!-- Global Settings -->
+      <script src="{% static 'assets/js/settings.js' %}"></script>
+
+      <!-- Moment.js -->
+      <script src="{% static 'assets/vendor/moment.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/moment-range.js' %}"></script>
+
+      <!-- Chart.js -->
+      <script src="{% static 'assets/vendor/Chart.min.js' %}"></script>
+      <script src="{% static 'assets/js/chartjs-rounded-bar.js' %}"></script>
+      <script src="{% static 'assets/js/chartjs.js' %}"></script>
+
+      <!-- Instructor Dashboard Page JS -->
+      <script src="{% static 'assets/js/page.instructor-dashboard.js' %}"></script>
+
+      <!-- List.js -->
+      <script src="{% static 'assets/vendor/list.min.js' %}"></script>
+      <script src="{% static 'assets/js/list.js' %}"></script>
+
+
+
+
+      <!-- Required by Calendar (fullcalendar) -->
+      <script src="{% static 'assets/vendor/dropzone.min.js' %}"></script>
+
+      <!-- TREE JS -->
+      <script src="{% static 'jquery.ui/1.11.4/jquery-ui.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/jquery.fancytree-all.min.js' %}"></script>
+
+      <!-- Init -->
+      <script src="{% static 'assets/js/fancytree.js' %}"></script>
+
+</body>
+
+</html>

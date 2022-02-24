@@ -1,0 +1,77 @@
+{% url 'accounts:studentdashboard' as studentdashboard %}
+{% url 'accounts:student_edit_profile' as student_edit_profile %}
+{% url 'accounts:change_login_details' as change_login_details %}
+{% url 'subscription' as subscription %}
+{% url 'onlinecourses:courses_all' as courses_all %}
+{% url 'onlinecourses:courses_me' as courses_me %}
+{%  url 'student_all_signal' as student_all_signal %}
+{% url 'all_subscriber_forecast' as all_subscriber_forecast %}
+{% url 'accounts:instructordashboard' as instructordashboard %}
+
+<div class="mdk-drawer js-mdk-drawer" id="default-drawer"  style="position:relative;z-index:100000;">
+    <div class="mdk-drawer__content ">
+        <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
+            <div class="sidebar-p-y">
+                <div class="sidebar-heading">APPLICATIONS</div>
+                <ul class="sidebar-menu sm-active-button-bg">
+                    <li class="sidebar-menu-item {% if request.path == studentdashboard %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:studentdashboard'%}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item {% if request.path == student_edit_profile %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:student_edit_profile' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">verified_user</i> Edit Profile
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar-menu-item {% if request.path == change_login_details %} active {% endif %} ">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:change_login_details'%}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">vpn_key</i> Change Login Detail
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == subscription %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'subscription' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> subscription
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="sidebar-heading">Student</div>
+                <ul class="sidebar-menu sm-active-button-bg">
+                    <li class="sidebar-menu-item {% if request.path == courses_all %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'onlinecourses:courses_all'%}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> Browse
+                            Courses
+                        </a>
+                    </li>
+                   
+                    <li class="sidebar-menu-item {% if request.path == courses_me %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'onlinecourses:courses_me' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">library_books</i> My Courses
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == student_all_signal %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'student_all_signal' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lightbulb</i> Crypto Signals
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item {% if request.path == all_subscriber_forecast %} active {% endif %}">
+                        <a class="sidebar-menu-button" href="{% url 'all_subscriber_forecast' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">sports_soccer</i> Bet Forecast
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="{% url 'accounts:logout' %}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

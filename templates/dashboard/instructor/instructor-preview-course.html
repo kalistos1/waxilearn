@@ -1,0 +1,119 @@
+﻿{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Course</a></li>
+                    <li class="breadcrumb-item active">{{course.title}}</li>
+                </ol>
+                <h1 class="h2">{{course.title}}</h1>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <img src="/media/{{ course.photo }}" class="img-fluid mx-auto d-block">
+                        </div>
+
+                        <!-- Lessons -->
+                        {% if lessons %}
+                        <ol class="card list-group list-group-fit">
+                            <button class="btn btn-success">
+                                <a href="{% url 'onlinecourses:add_more_lesson' course.id %}" class="text-light">Add Another
+                                    Lesson</a>
+                            </button>
+                            {% for lesson in lessons %}
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <a href="#">{{ lesson.title }} </a>
+                                    </div>
+                                    <div class="media-right">
+                                        <small class="text-muted-light">
+                                            <a href="{% url 'onlinecourses:lesson_preview' lesson.id %}">preview
+                                                lesson</a></small>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            {% else %}
+                            <br>
+                            <b>No Lesson has been added for this course</b>
+                            <button class="btn btn-large btn-success">
+                                <a href="{% url 'onlinecourses:add_more_lesson' course.id %}" class="text-light">Add
+                                    Lesson</a>
+                            </button>
+                            <br>
+                        </ol>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Course Description</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    {{ course.description|safe}}
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <ul class="list-group list-group-fit">
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+
+                                        <div class="media-body">
+                                            <h3>
+                                                Eligibility
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <i class="material-icons text-muted-light">assessment</i>
+                                        </div>
+                                        <div class="media-body">{{course.eligibility|safe}}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Ratings</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="rating">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                </div>
+                                <small class="text-muted">20 ratings</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include '../../partials/_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

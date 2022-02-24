@@ -1,0 +1,95 @@
+﻿{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Home</a></li>
+                    <li class="breadcrumb-item"><a href="">Bet Forecast</a></li>
+                    <li class="breadcrumb-item active">{{ forecast.title }}</li>
+                </ol>
+                <h1 class="h2">{{ forecast.title }}</h1>
+                <div class="row">
+                    <div class="col-md-8">
+                        <!--
+                        <div class="card">
+                            <img src="/media/{{ forecast.photo }}" class="img-fluid mx-auto d-block">
+                        </div>
+-->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Bet Forecast Content</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4>
+                                    {{ forecast.title}}
+
+                                </h4>
+                                <div>
+                                    <table class = "table table-success table-bordered table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Events</th>
+                                                <th scope="col">1</th>
+                                                <th scope="col">X</th>
+                                                <th scope="col">2</th>
+                                                <th scope="col">1X</th>
+                                                <th scope="col">12</th>
+                                                <th scope="col">X2</th>
+                                                <th scope="col">Over</th>
+                                                <th scope="col">Under</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-success text-light">
+                                                <td >ManU - Chelsea</td>
+                                                <td>1.98</td>
+                                                <td>3.50</td>
+                                                <td>4.05</td>
+                                                <td>1.23</td>
+                                                <td>1.29</td>
+                                                <td>1.80</td>
+                                                <td>1.97</td>
+                                                <td>1.80</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">forecast Description</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    {{forecast.description}}
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

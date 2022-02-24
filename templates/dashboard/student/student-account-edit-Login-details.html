@@ -1,0 +1,161 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} students dashboard {% endblock %}
+{% load static %}
+{% block content %}
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+
+            <div class="container-fluid page__container p-0">
+                <div class="row m-0">
+                    <div class="col-lg container-fluid page__container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Edit Account</li>
+                        </ol>
+                        <h1 class="h2">Change Username</h1>
+                        <p>{% include 'partials/_messages.html'%}</p>
+                        <p>{{error}}</p>
+                        <form method="post" action="{% url 'accounts:change_username' user.id %}">
+                            {% csrf_token %}
+                            <div class="card">
+                                <div class="list-group list-group-fit">
+                                    <div class="list-group-item">
+                                        <div class="form-group m-0" role="group" aria-labelledby="label-firstname">
+                                            <div class="form-row">
+                                                <label id="label-firstname" for="firstname"
+                                                    class="col-md-3 col-form-label form-label">New Username</label>
+                                                <div class="col-sm-9">
+                                                    <div role="group"
+                                                        class="input-group input-group-merge form-control-prepended">
+                                                        {{username_form.old_username}}
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <span class="fas fa-user"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="form-group m-0" role="group" aria-labelledby="label-lastname">
+                                            <div class="form-row">
+                                                <label id="label-lastname" for="lastname"
+                                                    class="col-md-3 col-form-label form-label">Username Confirm</label>
+                                                <div class="col-sm-9">
+                                                    <div role="group"
+                                                        class="input-group input-group-merge form-control-prepended">
+                                                        {{username_form.new_username}}
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <span class="fas fa-user"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-nav__content">
+                                <button class="btn btn-success">Save Changes</button>
+                            </div>
+                            <br>
+                            <h4>Change Password</h4>
+                        </form>
+                        <!--
+                        <div class="alert alert-light border-1 border-left-3 border-left-primary d-flex">
+                            <i class="material-icons text-success mr-3">check_circle</i>
+                            <div class="text-body">An email with password reset instructions has been sent to your email
+                                address, if it exists on our system.</div>
+                        </div>
+                        -->
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="card">
+                                <div class="list-group list-group-fit">
+                                    <div class="list-group-item">
+                                        <div class="form-group m-0" role="group" aria-labelledby="label-password">
+                                            <div class="form-row">
+                                                <label id="label-password" for="password"
+                                                    class="col-sm-3 col-form-label form-label">Old password:</label>
+                                                <div class="col-sm-9">
+                                                    <div role="group"
+                                                        class="input-group input-group-merge form-control-prepended">
+                                                        {{password_form.old_password}}
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <span class="fas fa-key"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="form-group m-0" role="group" aria-labelledby="label-password2">
+                                            <div class="form-row">
+                                                <label id="label-password2" for="password2"
+                                                    class="col-sm-3 col-form-label form-label">New password:</label>
+                                                <div class="col-sm-9">
+                                                    <div role="group"
+                                                        class="input-group input-group-merge form-control-prepended">
+                                                        {{password_form.new_password}}
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <span class="fas fa-key"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-nav__content">
+                                <button class="btn btn-success">Save Changes</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <br>
+                    <div id="page-nav" class="col-lg-auto page-nav">
+                        <div data-perfect-scrollbar>
+                            <div class="page-section pt-lg-32pt">
+                                <ul class="nav page-nav__menu">
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:student_edit_profile' %}" class="nav-link ">Basic
+                                            Information</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:change_login_details'%}"
+                                            class="nav-link active">Change Login Details
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'accounts:upload_profile_photo'%}" class="nav-link">Change
+                                            profile picture
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}
