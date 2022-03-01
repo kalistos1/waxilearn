@@ -1,7 +1,6 @@
 
 import os
 from pathlib import Path
-from sys import setdlopenflags
 from decouple import config
 #import django_heroku
 #import dj_database_url
@@ -173,8 +172,10 @@ CKEDITOR_CONFIGS = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'waxionschool@gmail.com'
-EMAIL_HOST_PASSWORD = 'gkzyhcuupiyixzuq'
+#EMAIL_HOST_USER = 'waxionschool@gmail.com'
+#EMAIL_HOST_PASSWORD = 'gkzyhcuupiyixzuq'
+EMAIL_HOST_USER = 'ucktech1@gmail.com'
+EMAIL_HOST_PASSWORD = 'gdnnmdnubvuzwvzc'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 

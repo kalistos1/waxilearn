@@ -84,6 +84,7 @@ def SignUp(request):
                 user.set_password(get_password1)
                 #Now save new user
                 user.save() 
+                print('here is  the fucking email', get_email)
                 current_site = get_current_site(request)
                 mail_subject = 'Activate your waxion account.'
                 message = render_to_string('accounts/acct_activation_email.html', {
@@ -97,7 +98,12 @@ def SignUp(request):
                         mail_subject, message, to=[get_email]
                     )
                 email.send()
-            return render(request, 'accounts/register_done.html')
+
+                context={
+                    'email':get_email,
+                    'username': get_username,
+                }
+            return render(request, 'accounts/register_done.html',context)
         else:
             return render(request, 'accounts/signup.html', {'form': form})
     else:
