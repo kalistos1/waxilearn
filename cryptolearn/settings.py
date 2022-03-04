@@ -92,7 +92,7 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'waxionschool',
+        'NAME': 'cryptolearndb',
         'USER': 'admin',
         'PASSWORD': 'kal15t05',
         'HOST': 'localhost',
