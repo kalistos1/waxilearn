@@ -19,7 +19,7 @@ SECRET_KEY ='django-insecure-)qwr3xqd+iq%wkr@*f)89auiyxh^_^)%m!u0q(2r60)hc76p4t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['137.184.152.241', 'localhost']
+ALLOWED_HOSTS = ['137.184.152.241', 'www.waxionschool.com','waxionschool.com','localhost']
 
 
 # Application definition
