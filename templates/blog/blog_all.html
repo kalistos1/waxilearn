@@ -1,0 +1,126 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="body container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <section>
+                                    <h3 class="">Categories</h3>
+                                    <nav class="nav flex-column">
+                                        {% if allcategory %}
+                                          {% for category in allcategory %}
+
+                                        <a class="nav-link  border-bottom border-dark fs-2" aria-current="page"
+                                            href="{% url 'postcat' category.slug%}">{{ category.name }}</a>
+                                        {% endfor %}
+                                        {% endif %}
+                                        
+                                    </nav>
+                                </section>
+                                <section class="mt-4">
+                                    <h3 class="">Tags</h3>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> html</i>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> CSS</i>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> JS</i>
+                                </section>
+                                <section class="mt-4">
+                                    <h3 class="">Social Media</h3>
+                                    <img src="https://img.icons8.com/material/48/000000/facebook-new.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/twitter--v1.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/instagram-new--v1.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/whatsapp--v3.png" />
+
+                                </section>
+                                <section class="mt-3">
+                                    <h3 class="">Subscribe for</h3>
+
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                          {% if get_cat_posts %}
+                            {% for post in get_cat_posts %}
+                            <div class="col-md-6">
+                                <div class="card border-left-3 border-left-primary">
+
+                                    <img class="card-img-top img-fluid" src=" {% static 'img/t5.jpg' %}"
+                                        alt="Card image cap">
+                                    <div class="card-header text-center">
+                                        <h4 class="card-title">{{post.title}}</h4>
+                                        <span> by <b><i> uba Joseph </i></b></span> <span> <i>january, 10, 2022</i>
+                                        </span>
+                                    </div>
+                                    <div class="card-body">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        <div class="mt-4">
+                                            <button class="btn d-block bg-info text-light"><a href="">Read More</a> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% elif allPosts %}
+                            {%  for post in allPosts%}
+                            <div class="col-md-6">
+                                <div class="card border-left-3 border-left-primary">
+
+                                    <img class="card-img-top img-fluid" src=" {% static 'img/t5.jpg' %}"
+                                        alt="Card image cap">
+                                    <div class="card-header text-center">
+                                        <h4 class="card-title fw-4">{{post.title}}</h4>
+                                        <div class="d-flex justify-content-between">
+                                        <span> by <i> <b>{{post.author}}</b></i></span> <span> <i>{{post.date_created }}</i>
+                                        </span>
+                                    </div>
+                                    </div>
+                                    <div class="card-body">
+
+                                        {{post.body|safe}}
+                                        <div class="mt-4">
+                                           <a href="#" class="text-light d-block"> <button class="btn d-block bg-info text-light">Read More</button></a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- App Settings FAB -->
+
+    </div>
+</div>
+
+
+
+
+
+<!-- Vendor JS -->
+<script src="{% static 'assets/vendor/jquery.nestable.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.bootstrap-touchspin.js' %}"></script>
+
+<!-- Initialize -->
+<script src="{% static 'assets/js/nestable.js' %}"></script>
+<script src="{% static 'assets/js/touchspin.js' %}"></script>
+
+{% endblock %}

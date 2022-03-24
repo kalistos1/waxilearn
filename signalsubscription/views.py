@@ -252,7 +252,7 @@ def studentViewSignal(request,pk):
 		'signal_user_membership':signal_user_membership,
 		'signal_user_subscription':signal_user_subscription,
 	}
-	return render(request,'dashboard/student/student-signal-view',context)
+	return render(request,'dashboard/student/student-view-signal.html',context)
 
 
 def Instructor_create_signal_sub(request):

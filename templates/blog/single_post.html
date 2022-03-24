@@ -1,0 +1,176 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
+    <div class="shadow-sm py-4">
+        <div class="container d-flex justify-content-between">
+            <ol class="breadcrumb mr-auto " style="font-size:1em;">
+                <li class="breadcrumb-item"><a href="instructor-dashboard.html" class="fs-5">Home</a></li>
+                <li class="breadcrumb-item"><a href="instructor-dashboard.html" class="fs-2">Blog</a></li>
+                <li class="breadcrumb-item active">blog post</li>
+            </ol>
+            <span style="font-size:2em;"> BLOG POST</span>
+        </div>
+    </div>
+
+    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
+            <div class="body container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <section>
+                                    <h3 class="">Categories</h3>
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link  border-bottom border-dark fs-2" aria-current="page"
+                                            href="#">Active</a>
+                                        <a class="nav-link " href="#">Link</a>
+                                        <a class="nav-link" href="#">Link</a>
+                                        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                    </nav>
+                                </section>
+                                <section class="mt-4">
+                                    <h3 class="">Tags</h3>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> html</i>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> CSS</i>
+                                    <i class=" badge badge-secondary py-2 px-4 rounded-pill"> JS</i>
+                                </section>
+                                <section class="mt-4">
+                                    <h3 class="">Social Media</h3>
+                                    <img src="https://img.icons8.com/material/48/000000/facebook-new.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/twitter--v1.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/instagram-new--v1.png" />
+                                    <img src="https://img.icons8.com/material/48/000000/whatsapp--v3.png" />
+
+                                </section>
+                                <section class="mt-3">
+                                    <h3 class="">Subscribe for</h3>
+
+
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card border-left-3 border-left-primary">
+
+                                    <img class="card-img-top img-fluid" src=" {% static 'img/t5.jpg' %}"
+                                        alt="Card image cap">
+                                    <div class="card-header ">
+                                        <div>
+                                            <h2 class="card-title ">Card title</h4>
+                                                <div class="d-flex justify-content-between">
+                                                    <span> by <b><i> uba Joseph </i></b></span>
+                                            <span> <i>january, 10, 2022</i>
+                                                </div>
+                                            
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos
+                                        hic
+                                        magni mollitia pariatur possimus quidem quis quo sunt?
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--related apps--->
+                            <div class="col-md-12 d-flex justify-content-between">
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                    <img src=" {% static 'img/t5.jpg' %}" class=" d-block mx-auto img-fluid">
+                                    <h3 class="text-center">title of blog</h3>    
+                                </div>
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header">
+                                    <img src=" {% static 'img/t5.jpg' %}" class=" d-block mx-auto img-fluid">
+                                    <h3 class="text-center">title of blog</h3>    
+                                </div>
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+                              
+                                <div class="card">
+                                    <div class="card-header">
+                                    <img src=" {% static 'img/t5.jpg' %}" class=" d-block mx-auto img-fluid">
+                                    <h3 class="text-center">title of blog</h3>    
+                                </div>
+                                    <div class="card-body d-flex justify-content-between">
+                                        <p>hell</p>
+                                        <p>hi</p>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                    <img src=" {% static 'img/t5.jpg' %}" class=" d-block mx-auto img-fluid">
+                                    <h3 class="text-center">title of blog</h3>
+                                </div>
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- App Settings FAB -->
+
+    </div>
+</div>
+
+
+
+
+
+<!-- Vendor JS -->
+<script src="{% static 'assets/vendor/jquery.nestable.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.bootstrap-touchspin.js' %}"></script>
+
+<!-- Initialize -->
+<script src="{% static 'assets/js/nestable.js' %}"></script>
+<script src="{% static 'assets/js/touchspin.js' %}"></script>
+
+{% endblock %}

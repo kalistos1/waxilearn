@@ -19,7 +19,7 @@ SECRET_KEY ='django-insecure-)qwr3xqd+iq%wkr@*f)89auiyxh^_^)%m!u0q(2r60)hc76p4t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['137.184.152.241', 'www.waxionschool.com','waxionschool.com','localhost']
+ALLOWED_HOSTS = ['137.184.152.241','127.0.0.1', 'www.waxionschool.com','waxionschool.com','localhost']
 
 
 # Application definition
@@ -164,6 +164,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 VERIFY_EXPIRE_DAYS = 3
 
+#PAYSTACK_SECRET_KEY = 'sk_live_4fe7943642a8ece7567da7664ff91f5845b66a88'
 PAYSTACK_SECRET_KEY = 'sk_test_9b950ab2270d1a24cd4c950912dc9652d8ae7b58'
 
 CKEDITOR_CONFIGS = {
@@ -185,10 +186,10 @@ CKEDITOR_CONFIGS = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-#EMAIL_HOST_USER = 'waxionschool@gmail.com'
-#EMAIL_HOST_PASSWORD = 'gkzyhcuupiyixzuq'
-EMAIL_HOST_USER = 'ucktech1@gmail.com'
-EMAIL_HOST_PASSWORD = 'gdnnmdnubvuzwvzc'
+EMAIL_HOST_USER = 'waxionschool@gmail.com'
+EMAIL_HOST_PASSWORD = 'gkzyhcuupiyixzuq'
+#EMAIL_HOST_USER = 'ucktech1@gmail.com'
+#EMAIL_HOST_PASSWORD = 'gdnnmdnubvuzwvzc'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 

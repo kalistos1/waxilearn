@@ -21,7 +21,7 @@ class BetForecastForm(forms.ModelForm):
         self.fields['total_odd'].widget.attrs.update({'class' : 'form-control'})
         self.fields['start_time'].widget.attrs.update({'class' : 'form-control'})   
         self.fields['play_status'].widget.attrs.update({'class' : 'form-control'})     
-        self.fields['forcast_win_status'].widget.attrs.update({'class' : 'form-control'})
+        self.fields['forcast_win_status'].widget.attrs.update({'class' : ''})
 
 
 class BettingMembershipSubType(forms.ModelForm):

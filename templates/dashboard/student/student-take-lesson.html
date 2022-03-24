@@ -3,59 +3,99 @@
 {% load static %}
 {% load embed_video_tags %}
 {% block content %}
-            <!-- Header Layout Content -->
-            <div class="mdk-header-layout__content">
+<!-- Header Layout Content -->
+<div class="mdk-header-layout__content">
 
-                <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
-                    <div class="mdk-drawer-layout__content page ">
+    <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content page ">
 
-                        <div class="container-fluid page__container">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Courses</a></li>
-                                <li class="breadcrumb-item active">Lesson title</li>
-                            </ol>
-                            
-                            <div class="row">
-                                {%  if lessons %}
-                                <div class="col-md-4">
-                                    <h4>lessons</h4>
-                                    <ul class="card list-group list-group-fit">
-                                        {% for lesson in lessons %}
-                                       
-                                        <li class="list-group-item  {% if active_lesson.id == lesson.id %}active {% endif %}">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                   <span>{{lesson.title}}</span>
-                                                   <small class="media-right"> <button class="btn {% if active_lesson.id == lesson.id %}btn-warning {% else %} btn-info{% endif %}">{% if active_lesson.id == lesson.id %}Active {% else %} <a href="{% url 'onlinecourses:student_start_lesson' lesson.id %}" class="text-light">start <i
-                                                    class="material-icons btn__icon--right">play_circle_outline</i></a> {% endif %}</button></small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                                                              
-                                    </ul>
-                                    {% endfor %}
+            <div class="container-fluid page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                    <li class="breadcrumb-item active">Lesson title</li>
+                </ol>
+
+                <div class="row">
+                    {% if lessons %}
+                    <div class="d-none d-sm-none d-md-block d-lg-block col-md-3 ">
+                        <h4>lessons</h4>
+                        <ul class="card list-group list-group-fit ">
+                            {% for lesson in lessons %}
+
+                            <li class=" list-group-item {% if active_lesson.id == lesson.id %}active {% endif %}"
+                                style="font-size:12px; ">
+                                <div class="media">
+                                    <div class="media-body d-flex justify-content-between">
+                                        <span>{{lesson.title}}</span>
+                                        <small class="media-right">
+                                            <button
+                                                class="btn py-0 px-1 {% if active_lesson.id == lesson.id %}btn-warning {% else %} btn-info{% endif %}">
+                                                {% if active_lesson.id == lesson.id %}Active {% else %}
+                                                <a href="{% url 'onlinecourses:student_start_lesson' lesson.slug %}"
+                                                    class="text-light ">start
+                                                    <i class="material-icons btn__icon--right">play_circle_outline</i>
+                                                </a>
+                                                {% endif %}
+                                            </button>
+                                        </small>
+                                    </div>
                                 </div>
-                                {% endif %}
-                                <div class="col-md-8">
-                                    <div class="">
-                                       <h4 class="text-center"> {{active_lesson.title}}</h4>
-                                    </div>
-                                    <div class="card">
-                                        
-                                        <div class="embed-responsive embed-responsive-16by9">  
-                                          {% video active_lesson.add_video 'medium' %}
-                                        </div>
-                                    </div>
-                                
-                                    <!-- Lessons -->
+                            </li>
+                            {% endfor %}
+                            </u l>
+
+                    </div>
+                    {% endif %}
+                    <div class=" col-12 col-sm-12 col-md-9">
+                        <div class="">
+                            <h4 class="text-center"> {{active_lesson.title}}</h4>
+                        </div>
+                        <div class="card">
+
+                            <div class="embed-responsive embed-responsive-16by9">
+                                {% video active_lesson.add_video 'medium' %}
+                            </div>
+                        </div>
+                        <!-- lesson info and data -->
+                        <div class="card">
+
+                            <!--tab nav-->
+                            <div class="card-header bg-dark py-2">
+
+                                <ul class="nav nav-pills " id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link  active" id="lesson-text-tab" data-toggle="pill"
+                                            href="#lesson-text" role="tab" aria-controls="lesson-text"
+                                            aria-selected="false">Lesson Text</a>
+                                    </li>
+                                    <li class="nav-item d-block d-sm-block d-md-none d-lg-none border-muted">
+                                        <a class="nav-link" id="lesson-outline-tab" data-toggle="pill"
+                                            href="#lesson-outline" role="tab" aria-controls="lesson-outline"
+                                            aria-selected="true">Outline</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="more-tab" data-toggle="pill" href="#more" role="tab"
+                                            aria-controls="more" aria-selected="false">more</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!--tab nav ends-->
+
+                            <!-- tab content-->
+                            <div class="tab-content card-body" id="pills-tabContent">
+
+                                <!--lesson text tab-->
+                                <div class="tab-pane fade show active" id="lesson-text" role="tabpanel"
+                                    aria-labelledby="lesson-text-tab">
                                     {% if lesson_text %}
                                     <ul class="card list-group list-group-fit">
                                         {% for text in lesson_text %}
                                         <li class="list-group-item">
                                             <div class="media">
                                                 <div class="media-body">
-                                                   <p> {{text.body|safe }}</p>
+                                                    <p> {{text.body|safe }}</p>
                                                 </div>
                                             </div>
                                         </li>
@@ -63,12 +103,47 @@
                                     </ul>
                                     {% endif %}
                                 </div>
+                                <!--lesson text tab ends-->
+
+                                <!--lesson Outline tab-->
+                                <div class="tab-pane d-md-none d-lg-none fade " id="lesson-outline" role="tabpanel"
+                                    aria-labelledby="lesson-outline-tab">
+                                    {%  if lessons %}
+                                    <div class="col-md-3">
+                                        <ul class="card list-group list-group-fit ">
+                            
+                                        {% for lesson in lessons %}
+                                        <li class="  list-group-item {% if active_lesson.id == lesson.id %}active {% endif %}" style="font-size:12px;">
+                                            <div class="media">
+                                               <div class="media-body d-flex justify-content-between">
+                                                   <span >{{lesson.title}}</span>
+                                                   <small class="media-right"> <button class="btn py-0 px-1 {% if active_lesson.id == lesson.id %}btn-warning {% else %} btn-info{% endif %}">{% if active_lesson.id == lesson.id %}Active {% else %} <a href="{% url 'onlinecourses:student_start_lesson' lesson.slug %}" class="text-light ">start <i
+                                                    class="material-icons btn__icon--right">play_circle_outline</i></a> {% endif %}</button></small>
+                                                </div>
+                                           </div>
+                                        </li>
+                            
+                                        {% endfor %}                          
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                </div>
+                                <!--lesson outline tab ends-->
+                                <div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more-tab">
+                                    wadup
+                                </div>
                             </div>
+                            <!-- tab content ends-->
                         </div>
 
+                        <!-- lesson info and data ends-->
+
                     </div>
-                {% include '../../partials/_student_sidebar.html' %}
-                </div>             
+                </div>
             </div>
-              {% endblock %}
-        
+
+        </div>
+        {% include '../../partials/_student_sidebar.html' %}
+    </div>
+</div>
+{% endblock %}

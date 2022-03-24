@@ -22,28 +22,28 @@
                                     style="width:100%;">
                             </a>
                             <hr>
-                            <div class="card-body">
+                            <div class="card-body font-weight-bold">
                                 {{ course.description|safe}}
 
                             </div>
                         </div>
 
                         <!-- Lessons -->
-                        <h3>Available Lessons/Outline</h3>
+                        <h3 class="text-dark">Available Lessons/Outline</h3>
                         {% if outline %}
-                        <ul class="card list-group list-group-fit" style="list-style-type:none; padding-left:5%;">
+                        
+                        <ul class="card list-group list-group-fit d-flex justify-content-center " style="list-style-type:none; padding-left:8%;">
 
-                            {% for i in outline %}
-                            <li>
+                            {% for lesson in outline %}
+                            <li class="border-top pt-2">
                                 <div class="row" >
-                                    <div class="col-sm-9 text-left py-0">
-                                       <h5 class="text-info">{{ i.title }}</h5> 
+                                    <div class="col-sm-9 d-flex justify-content-between y-0">
+                                       <h5 class="text-info d-inline">{{ lesson.title }}</h5> 
+                                       <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons text-right">ondemand_video</i>
                                     </div>
+                                    
                                 </div>
-                                <hr>
                             </li>
-                            <br>
-
                             {% endfor %}
                         </ul>
                         {% else %}
@@ -75,7 +75,7 @@
                                     <!-- <strong><s>N</s>{{ course.price }}</strong>-->
                                 </a>
                                 {% else %}
-                                <a href="{% url 'onlinecourses:buy_course'  course.id  %}"
+                                <a href="{% url 'onlinecourses:buy_course' course.slug  %}"
                                     class="btn btn-white btn-block flex-column ">
                                     click to enroll to Course For
                                     <!-- <strong><s>N</s>{{ course.price }}</strong>-->
@@ -85,7 +85,7 @@
                         </div>
                         {% elif membership.membership.membership_type == "Free" %}
                         <div class="card">
-                            <div class="card-body text-center bg-success ">
+                            <div class="card-body text-center bg-warning ">
                                 <h5 class="text-light">You are in Free Subscription<br>to enroll in this course</h5>
                                 <h5 class="text-light">Upgrade your Subscription Plan</h5>
                                 <button class="btn btn-danger">

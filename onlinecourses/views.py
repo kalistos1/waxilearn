@@ -19,10 +19,10 @@ def courses_me(request):
     user = request.user 
     try:   
         studentcourses = StudentCourses.objects.filter(user_id=user.id)
-       
+
     except StudentCourses.DoesNotExist:
         studentcourses = None
-    return render(request, "dashboard/student/student-my-courses.html", {'studentcourses':studentcourses, 'user_membership': user_membership})
+    return render(request, "dashboard/student/student-my-courses.html", {'studentcourses':studentcourses, 'user_membership': user_membership,})
 
 
 
@@ -124,11 +124,11 @@ def load_course(request, pk):
  # load_course loads, the full content of a course enrolled to ,by a user so he can start learn
  
 @login_required
-def student_start_course(request, pk):
+def student_start_course(request, slug):
     user = request.user
-    course = Course.objects.get(pk=pk)
+    course = Course.objects.get(slug=slug)
     lessons = course.lesson_set.all()
-    user_bought_course = StudentCourses.objects.filter(user__pk=user.id, course__pk=pk).count()
+    user_bought_course = StudentCourses.objects.filter(user__pk=user.id, course__slug=slug).count()
     comment_form = CommentForm()
 
     if user_bought_course <= 0:
@@ -146,13 +146,11 @@ def student_start_course(request, pk):
 
 
 @login_required
-def student_start_lesson(request,pk):
+def student_start_lesson(request,slug):
     user = request.user
-    active_lesson= Lesson.objects.get(pk=pk)
+    active_lesson= Lesson.objects.get(slug=slug)
     lesson_text = active_lesson.text_set.all()
-    for i in Course.objects.all():
-        lessons = i.lesson_set.all()
-            
+    lessons= active_lesson.course.lesson_set.all()         
     context = {
         'lessons':lessons,
         'user':user,
@@ -166,14 +164,11 @@ def student_start_lesson(request,pk):
 # this view adds a course to  the list of courses a user is bought or has added to learn
 
 @login_required
-def buy_course(request, pk):   
-    course = Course.objects.get(pk=pk)
+def buy_course(request, slug):   
+    course = Course.objects.get(slug=slug)
     StudentCourses.objects.create(user=request.user, course=course,)
-    context = {
-             'course':course,
-             'message':"succesfully enrolled into course",            
-        }
-    return render(request, "dashboard/student/student-view-course.html", context)
+    messages.success(request,"successfully enrolled to course")
+    return redirect('onlinecourses:courses_me')
 
 
 
@@ -251,7 +246,7 @@ def delete_course(request, pk):
 def edit_course(request,pk):
     if request.method == 'POST':
         course = Course.objects.get(pk=pk)
-        courseForm = AddCourseForm(request.POST, request.FILES, instance=course)
+      
         if courseForm.is_valid():
             courseForm.save()
             messages.success(request, ('course was successfully updated!'))
@@ -344,7 +339,7 @@ def add_more_lesson(request, pk):
 
 
 @login_required    
-def Add_Lesson_text(request):
+def Add_Lesson_text(request,id):
 
     if request.method == 'POST':
         form =AddTextForm(request.POST)

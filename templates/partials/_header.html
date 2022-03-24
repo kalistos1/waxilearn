@@ -1,13 +1,79 @@
+{% url 'postlist' as postlist %}
+{% url 'postdetail' as postdetail %}
 {% load static %}
 <!-- Header -->
 
 <div id="header" data-fixed class="mdk-header js-mdk-header mb-0">
     <div class="mdk-header__content">
-        {% if user %}
+
         <!-- Navbar -->
         <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
             <div class="container-fluid">
                 <!-- Toggle sidebar -->
+                {% if request.path == postlist or request.path == postdetail %}
+                <a class="navbar-brand ml-md-5 pl-md-5" href="index.html">
+                    <img src="{% static 'img/logos/wazionlg.png' %}" alt="waxionschool" class="">
+                </a>
+
+                <ul class="nav navbar-nav mr-md-5 pr-md-5 d-md-flex flex-nowrap">
+                    <li class="nav-item border-0 mr-3">
+                        <a class="nav-link text-light" href="#contact">Home</a>
+                    </li>
+                    <li class="nav-item border-0 md-mr-22">
+                        <a class="nav-link text-light active" href="#contact">Blog</a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block">
+                        <a class="btn btn-info " href="{% url 'accounts:register' %}" role="button"
+                            data-tilt-perspective="300" data-tilt-speed="700"
+                            data-tilt-max="24"><span>Register</span></a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block ">
+                        <a class="btn btn-info " href="{% url 'accounts:login' %}" role="button"
+                            data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>Sign
+                                in</span></a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block ">
+                        <a class="btn rounded-pill pr-0" href="{% url 'accounts:login' %}" role="button">
+                            <img src="https://img.icons8.com/material/28/000000/facebook-new.png" />
+                        </a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block ">
+                        <a class="btn pr-0 pl-0" href="{% url 'accounts:login' %}" role="button">
+                            <img src="https://img.icons8.com/material/28/000000/twitter--v1.png" />
+                        </a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block ">
+                        <a class="btn pr-0  pl-0" href="{% url 'accounts:login' %}" role="button">
+                            <img src="https://img.icons8.com/material/28/000000/instagram-new--v1.png" />
+                        </a>
+                    </li>
+                    <li class="nav-item mt-2 d-none d-sm-block d-md-block ">
+                        <a class="btn rounded-pill pl-0" href="{% url 'accounts:login' %}" role="button">
+                            <img src="https://img.icons8.com/material/28/000000/whatsapp--v3.png" />
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu -->
+                <ul class="nav navbar-nav flex-nowrap mr-4 d-block d-sm-none d-md-none d-lg-none">
+                    <!-- User dropdown -->
+                    <li class="nav-item dropdown ml-1 ml-md-3">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
+                                src="/media/{{user.profile.photo }}" alt="Avatar" class="rounded-circle" width="40"></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+
+                            <a class="dropdown-item" href="instructor-profile.html">
+                                <i class="material-icons">person</i> Public Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                <i class="material-icons">lock</i> Logout
+                            </a>
+                        </div>
+                    </li>
+                    <!-- // END User dropdown -->
+                </ul>
+                {% else %}
+
+                {% if user %}
                 <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                     <span class="material-icons">menu</span>
                 </button>
@@ -15,184 +81,180 @@
                 <!-- Brand -->
                 <a href="instructor-dashboard.html" class="navbar-brand">
                     <img src="{% static 'img/logos/wazionlg.png' %}" class="mr-5" alt="waxion school" />
-                  <!--  <span class="d-none d-xs-md-block">School</span>-->
+                    <!--  <span class="d-none d-xs-md-block">School</span>-->
                 </a>
 
-                    <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap">
-                        <li class="nav-item">
-                            <div class="nav-stats">{{user.courses.title_set.all.count}} <small>courses available</small>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="nav-stats"><small>active courses</small></div>
-                        </li>
-                        <li class="nav-item mr-3">
-                            <div class="nav-stats">
-                                <small>{{user.user_membership.membership.membership_type}}</small><small>
-                                    subscription</small></div>
-                        </li>
-                    </ul>
+                <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap">
+                    <li class="nav-item">
+                        <div class="nav-stats">{{user.courses.title_set.all.count}} <small class="text-light">courses available</small>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-stats"><small>active courses</small></div>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <div class="nav-stats">
+                            <small>{{user.user_membership.membership.membership_type}}</small><small>
+                                subscription</small>
+                        </div>
+                    </li>
+                </ul>
 
-                    <!-- Search -->
-                    <form class="search-form d-none d-md-flex">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn" type="button"><i class="material-icons font-size-24pt">search</i></button>
-                    </form>
-                    <!-- // END Search -->
+                <!-- Search -->
+                <!-- <form class="search-form d-none d-md-flex">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn" type="button"><i class="material-icons font-size-24pt">search</i></button>
+                </form> -->
+                <!-- // END Search -->
 
-                    <div class="flex"></div>
+                <div class="flex"></div>
 
+                <!-- Menu -->
+                <ul class="nav navbar-nav flex-nowrap">
 
+                    <!-- Notifications dropdown -->
+                    <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
+                        <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
+                            data-dropdown-disable-document-scroll data-caret="false">
+                            <i class="material-icons">notifications</i>
+                            <span class="badge badge-notifications badge-danger">2</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div data-perfect-scrollbar class="position-relative">
+                                <div class="dropdown-header"><strong>Messages</strong></div>
+                                <div class="list-group list-group-flush mb-0">
 
-                    <!-- Menu -->
-                    <ul class="nav navbar-nav flex-nowrap">
+                                    <a href="instructor-messages.html"
+                                        class="list-group-item list-group-item-action unread">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">5 minutes ago</small>
 
-                        <!-- Notifications dropdown -->
-                        <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
-                            <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
-                                data-dropdown-disable-document-scroll data-caret="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="badge badge-notifications badge-danger">2</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div data-perfect-scrollbar class="position-relative">
-                                    <div class="dropdown-header"><strong>Messages</strong></div>
-                                    <div class="list-group list-group-flush mb-0">
+                                            <span class="ml-auto unread-indicator bg-primary"></span>
 
-                                        <a href="instructor-messages.html"
-                                            class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-muted">5 minutes ago</small>
-
-                                                <span class="ml-auto unread-indicator bg-primary"></span>
-
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <img src="{% static 'assets/images/people/110/woman-5.jpg' %}"
+                                                    alt="people" class="avatar-img rounded-circle">
                                             </span>
-                                            <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'assets/images/people/110/woman-5.jpg' %}"
-                                                        alt="people" class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong>Michelle</strong>
-                                                    <span class="text-black-70">Clients loved the new design.</span>
-                                                </span>
+                                            <span class="flex d-flex flex-column">
+                                                <strong>Michelle</strong>
+                                                <span class="text-black-70">Clients loved the new design.</span>
                                             </span>
-                                        </a>
+                                        </span>
+                                    </a>
 
-                                        <a href="instructor-messages.html"
-                                            class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-muted">5 minutes ago</small>
+                                    <a href="instructor-messages.html"
+                                        class="list-group-item list-group-item-action unread">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">5 minutes ago</small>
 
-                                                <span class="ml-auto unread-indicator bg-primary"></span>
+                                            <span class="ml-auto unread-indicator bg-primary"></span>
 
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <img src="{% static 'assets/images/people/110/woman-5.jpg '%}"
+                                                    alt="people" class="avatar-img rounded-circle">
                                             </span>
-                                            <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'assets/images/people/110/woman-5.jpg '%}"
-                                                        alt="people" class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong>Michelle</strong>
-                                                    <span class="text-black-70">🔥 Superb job..</span>
-                                                </span>
+                                            <span class="flex d-flex flex-column">
+                                                <strong>Michelle</strong>
+                                                <span class="text-black-70">🔥 Superb job..</span>
                                             </span>
-                                        </a>
+                                        </span>
+                                    </a>
 
-                                    </div>
+                                </div>
 
-                                    <div class="dropdown-header"><strong>System notifications</strong></div>
-                                    <div class="list-group list-group-flush mb-0">
+                                <div class="dropdown-header"><strong>System notifications</strong></div>
+                                <div class="list-group list-group-flush mb-0">
 
-                                        <a href="instructor-messages.html"
-                                            class="list-group-item list-group-item-action border-left-3 border-left-danger">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-muted">3 minutes ago</small>
+                                    <a href="instructor-messages.html"
+                                        class="list-group-item list-group-item-action border-left-3 border-left-danger">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">3 minutes ago</small>
 
-                                            </span>
-                                            <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i
-                                                            class="material-icons font-size-16pt text-danger">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">Your profile information has not been
-                                                        synced correctly.</span>
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i
+                                                        class="material-icons font-size-16pt text-danger">account_circle</i>
                                                 </span>
                                             </span>
-                                        </a>
+                                            <span class="flex d-flex flex-column">
 
-                                        <a href="instructor-messages.html"
-                                            class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-muted">5 hours ago</small>
-
+                                                <span class="text-black-70">Your profile information has not been
+                                                    synced correctly.</span>
                                             </span>
-                                            <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i
-                                                            class="material-icons font-size-16pt text-success">group_add</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong>Adrian. D</strong>
-                                                    <span class="text-black-70">Wants to join your private group.</span>
-                                                </span>
-                                            </span>
-                                        </a>
+                                        </span>
+                                    </a>
 
-                                        <a href="instructor-messages.html"
-                                            class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-muted">1 day ago</small>
+                                    <a href="instructor-messages.html" class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">5 hours ago</small>
 
-                                            </span>
-                                            <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i
-                                                            class="material-icons font-size-16pt text-warning">storage</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">Your deploy was successful.</span>
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="material-icons font-size-16pt text-success">group_add</i>
                                                 </span>
                                             </span>
-                                        </a>
+                                            <span class="flex d-flex flex-column">
+                                                <strong>Adrian. D</strong>
+                                                <span class="text-black-70">Wants to join your private group.</span>
+                                            </span>
+                                        </span>
+                                    </a>
 
-                                    </div>
+                                    <a href="instructor-messages.html" class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">1 day ago</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="material-icons font-size-16pt text-warning">storage</i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+
+                                                <span class="text-black-70">Your deploy was successful.</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
                                 </div>
                             </div>
-                        </li>
-                        <!-- // END Notifications dropdown -->
-                        <!-- User dropdown -->
-                        <li class="nav-item dropdown ml-1 ml-md-3">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
-                                    src="/media/{{user.profile.photo }}" alt="Avatar" class="rounded-circle"
-                                    width="40"></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="instructor-account-edit.html">
-                                    <i class="material-icons">edit</i> Edit Account
-                                </a>
-                                <a class="dropdown-item" href="instructor-profile.html">
-                                    <i class="material-icons">person</i> Public Profile
-                                </a>
-                                <a class="dropdown-item" href="{% url 'accounts:logout' %}">
-                                    <i class="material-icons">lock</i> Logout
-                                </a>
-                            </div>
-                        </li>
-                        <!-- // END User dropdown -->
-                    </ul>
+                        </div>
+                    </li>
+                    <!-- // END Notifications dropdown -->
+                    <!-- User dropdown -->
+                    <li class="nav-item dropdown ml-1 ml-md-3">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
+                                src="{% if user.profile.photo %} /media/{{user.profile.photo}} {% else %}{% static 'assets/images/people/110/woman-5.jpg' %} {% endif %}" alt="Avatar" class="rounded-circle" width="40"></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="instructor-account-edit.html">
+                                <i class="material-icons">edit</i> Edit Account
+                            </a>
+                            <a class="dropdown-item" href="instructor-profile.html">
+                                <i class="material-icons">person</i> Public Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                <i class="material-icons">lock</i> Logout
+                            </a>
+                        </div>
+                    </li>
+                    <!-- // END User dropdown -->
+                </ul>
             </div>
+            {% endif %}
+            {% endif %}
+
         </nav>
         <!-- // END Navbar -->
-        {% endif %}
 
     </div>
 </div>

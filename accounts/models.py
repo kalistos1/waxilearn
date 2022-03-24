@@ -28,7 +28,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     sex = models.CharField(max_length=10, blank=True)
     phone = models.CharField(max_length=20, null=True, blank=True)
-    photo = models.ImageField(upload_to='users/', default='users/user.png',blank=True)
+    photo = models.ImageField(upload_to='users/', default='user.png',blank=True)
     bio = models.TextField(max_length=500, blank=True, null=True)        
     email_confirmed = models.BooleanField(default=False)
     country = models.CharField(max_length=50, null=True, blank=True)    

@@ -30,47 +30,52 @@
                             <span>You have {{count}} courses Available</span>
                             <hr>
                         </div>
-    
+
                     </div>
-    
+
                 </form>
-                <div class="media align-items-center mb-headings">
+                <div class="media align-items-center mb-headings mb-3">
                     <div class="media-body">
-                        <h1 class="h2">Courses</h1>
-                    </div>
-                    <div class="media-right">
-                        <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-white active"><i class="material-icons">list</i></a>
-                            <a href="#" class="btn btn-white"><i class="material-icons">dashboard</i></a>
-                        </div>
+                        <h1 class="h3 text-success underline">Courses:</h1>
                     </div>
                 </div>
+
                 <div class="clearfix"></div>
 
-                <div class="card-columns">
+                <div class="row">
                     {% for course in page.object_list %}
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h4 class="card-title mb-0"><a href="{% url 'onlinecourses:load_course'  course.id  %}">{{ course.title }}</a></h4>
-                            <div class="rating">
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star</i>
-                                <i class="material-icons">star_border</i>
-                            </div>
-                            <p class=""> Eligibility :{{course.eligibility|safe}}</p>
-                        </div>
+                    <div class="col-4 col-sm-4 col-md-4 ">
                         <a href="{% url 'onlinecourses:load_course'  course.id  %}">
-                            <img src="/media/{{ course.photo }}" alt="Card image cap" class="mx-auto d-block img-fluid thumbnail"  style="height:200px;" >
+                            <img src="/media/{{ course.photo }}" alt="Card image cap"
+                                class="mx-auto d-block img-fluid thumbnail" style="height:200px;">
                         </a>
-                       
+
+                        <div class="card-header">
+                            <h4 class="card-title"><a class="text-dark"
+                                    href="{% url 'onlinecourses:load_course'  course.id  %}">{{ course.title }}</a></h4>
+
+                            <div class="d-flex justify-content-start">
+                                <p class="mr-1"> Eligibility:</p>
+                                <p >{{course.eligibility|safe}}</p>
+                            </div>
+                            <div class="d-flex justify-content-start mt-0">
+                                <p class="mr-1  mt-0"> Ratings:</p>
+                                <div class="rating mt-0">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     {% endfor %}
                 </div>
 
                 {% if page.has_other_pages %}
-                <ul class="pagination">
+                <ul class="pagination mt-5">
                     {% if page.has_previous %}
                     <li class="page-item ">
                         <a href="?page={{page.previous_page_number}}" class="page-link">&laquo;</a>
@@ -104,7 +109,7 @@
                 {% endif %}
             </div>
         </div>
-        {% include '../../partials/_student_sidebar.html' %}  
+        {% include '../../partials/_student_sidebar.html' %}
     </div>
 </div>
 {% endblock %}

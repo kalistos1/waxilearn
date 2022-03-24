@@ -53,6 +53,16 @@
                         <div class="card-header text-center">
                             <h4 class="card-title mb-0"><a href="{% url 'onlinecourses:load_course'  course.id  %}">{{
                                     course.title }}</a></h4>
+                            
+                        </div>
+                        <a href="{% url 'onlinecourses:load_course'  course.id  %}">
+                            <img src="/media/{{ course.photo }}" alt="Card image cap" style="width:100%;"
+                                class="mx-auto d-block">
+                        </a>
+                        <div class="card-body">
+                            <p class="text-muted">{{course.eligibility|safe}}</p>
+                            {{ course.description | truncatewords:9 }}
+                            <h4 class="badge badge-primary ">{{course.title}}</h4>
                             <div class="rating">
                                 <i class="material-icons">star</i>
                                 <i class="material-icons">star</i>
@@ -60,15 +70,6 @@
                                 <i class="material-icons">star</i>
                                 <i class="material-icons">star_border</i>
                             </div>
-                        </div>
-                        <a href="{% url 'onlinecourses:load_course'  course.id  %}">
-                            <img src="/media/{{ course.photo }}" alt="Card image cap" style="width:100%;"
-                                class="mx-auto d-block">
-                        </a>
-                        <div class="card-body">
-                            <small class="text-muted">{{course.eligibility|safe}}</small><br>
-                            {{ course.description | truncatewords:9 }}<br>
-                            <h4 class="badge badge-primary ">{{course.title}}</h4>
                         </div>
                         {% endfor %}
                     </div>

@@ -6,6 +6,9 @@ from onlinecourses.models import Course
 from bettingsubscription .models import BettingMembership
 from membership .models import Membership
 from signalsubscription . models import SignalMembership
+from blog.models import Post
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 def index(request):
@@ -14,6 +17,8 @@ def index(request):
     learning_sub = Membership.objects.all()
     betting_sub = BettingMembership.objects.all()
     signal_sub = SignalMembership.objects.all()
+    blog_posts = Post.objects.filter(status="published").order_by('date_created')[:4]
+    get_all_instructors =User.objects.filter(is_instructor = True).order_by('date_joined')[:3]
 
     context = {
             'contact_form':contact_form,
@@ -21,6 +26,8 @@ def index(request):
             'learning_sub':learning_sub,
             'betting_sub':betting_sub,
             'signal_sub':signal_sub,
+            'blog_posts':blog_posts,
+            'get_all_instructors':get_all_instructors,
     }
     return render(request, 'index/index.html',context)
 
