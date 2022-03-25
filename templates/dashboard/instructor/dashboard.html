@@ -1,6 +1,8 @@
 {% extends 'dashboard_base.html' %}
 {% load static %}
 {% block content %}
+
+{% if request.user.is_authenticated and request.user.is_instructor and request.user.is_admin %}
 <!-- Header Layout Content -->
 <div class="mdk-header-layout__content">
 
@@ -500,8 +502,11 @@
 
         </div>
 
-        <!-- sidebar here -->
+        <!-- App Settings FAB -->
         {% include '../../partials/_sidebar.html' %}
+        
+       
     </div>
 </div>
+{% endif %}
 {% endblock %}

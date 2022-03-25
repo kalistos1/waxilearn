@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-
+{% if request.user.is_authenticated and request.user.is_instructor and request.user.is_admin %}
 <!-- Header Layout Content -->
 <div class="mdk-header-layout__content">
 
@@ -37,9 +37,11 @@
                 </div>
             </div>
         </div>
-
+       
         <!-- App Settings FAB -->
         {% include '../../partials/_sidebar.html' %}
+
+      
     </div>
 </div>
 
@@ -54,5 +56,5 @@
 <!-- Initialize -->
 <script src="{% static 'assets/js/nestable.js' %}"></script>
 <script src="{% static 'assets/js/touchspin.js' %}"></script>
-
+{% endif %}
 {% endblock %}
