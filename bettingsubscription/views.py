@@ -168,9 +168,9 @@ def CreateForecast(request):
 
 
 @login_required
-def EditForecast(request, pk):
+def EditForecast(request, slug):
 	if request.method =="POST":
-		forecast = BetForcast.objects.get(pk=pk)
+		forecast = BetForcast.objects.get(slug=slug)
 		ForecastForm = BetForecastForm(request.post, instance=forecast)
 		if ForecastForm.is_valid():
 			ForecastForm.save()
@@ -184,7 +184,7 @@ def EditForecast(request, pk):
 			}
 			return render(request, 'dashboard/instructor/edit_forecast.html',context)
 	else:
-		forecast= BetForcast.objects.get(pk=pk)
+		forecast= BetForcast.objects.get(slug=slug)
 		ForecastForm = BetForecastForm(instance=forecast)
 		context ={
 			'ForecastForm':ForecastForm,
@@ -194,8 +194,8 @@ def EditForecast(request, pk):
 
 
 @login_required
-def DeleteForecast(request,pk):
-	BetForcast.objects.filter(pk=pk).delete()
+def DeleteForecast(request,slug):
+	BetForcast.objects.filter(slug=slug).delete()
 	forecast = BetForcast.objects.filter(instructor_id=request.user.id)
 	context ={
 			'forecast':forecast
@@ -224,9 +224,9 @@ def subscriberAllForecast(request):
 
 
 @login_required
-def subscriberViewForecast(request,pk):
+def subscriberViewForecast(request,slug):
 	user = request.user
-	forecast = BetForcast.objects.get(pk=pk)
+	forecast = BetForcast.objects.get(slug=slug)
 	betting_user_membership = BettingUserMembership.objects.filter(user=request.user) 
 	betting_user_subscription = BettingSubscription.objects.all
 

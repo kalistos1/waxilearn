@@ -15,7 +15,7 @@
                 <div
                     class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
-                        <h1 class="h2">Manage Signals</h1>
+                        <h1 class="h3 text-success">Manage Signals</h1>
                     </div>
                     <a href="{% url 'create_signals' %}" class="btn btn-success">Add Signal</a>
                 </div>
@@ -49,20 +49,20 @@
                         {% endif %}
                     </div>
                     {% for signal in page.object_list %}
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
 
                                 <div class="d-flex flex-column flex-sm-row">
-                                    <a href="#"
+                                    <!-- <a href="#"
                                         class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                         <img src="" alt="Card image cap"
                                             class="avatar-img rounded img-fluid mx-auto d-block ">
-                                    </a>
+                                    </a> -->
                                     <div class="flex" style="min-width: 200px;">
                                         <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Learn Vue.js</strong></a></h5> -->
                                         <h4 class="card-title mb-1"><a
-                                                href="{% url 'preview_signal' signal.id %}">{{signal.title}}</a>
+                                                href="{% url 'preview_signal' signal.slug %}">{{signal.title}}</a>
                                         </h4>
                                         <p class="text-black-70">{{signal.description}}</p>
                                         <div class="d-flex align-items-end">
@@ -72,8 +72,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-center ">
-                                                <a href="{% url 'edit_signal' signal.id%}"
-                                                    class="btn btn-lg btn-info ">Edit</a>
+                                                <a href="{% url 'edit_signal' signal.slug%}"
+                                                    class="btn btn-sm btn-info ">Edit</a>
                                             </div>
                                         </div>
                                     </div>
@@ -86,12 +86,12 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item"
-                                        href="{% url 'edit_signal' signal.id%}">Edit Signal</a>
+                                        href="{% url 'edit_signal' signal.slug%}">Edit Signal</a>
                                     <div class="dropdown-divider"></div>
                 
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-danger"
-                                        href="{% url 'delete_signal' signal.id%}">Delete Signal</a>
+                                        href="{% url 'delete_signal' signal.slug %}">Delete Signal</a>
                                 </div>
                             </div>
                         </div>

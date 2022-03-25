@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignalMembership
+from .models import SignalMembership,  CryptoSignal
 
 class SignalMembershipSubType(forms.ModelForm):
     class Meta:
@@ -13,4 +13,23 @@ class SignalMembershipSubType(forms.ModelForm):
         self.fields['duration'].widget.attrs.update({'class' : 'form-control', 'id':'duration'})
         self.fields['duration_period'].widget.attrs.update({'class' : 'form-control', 'id':'duration_period'})
         self.fields['price'].widget.attrs.update({'class' : 'form-control', 'id':'price'})
+
+
+
+
+class CryptoSignalForm(forms.ModelForm):
+    class Meta:
+        model = CryptoSignal
+        fields ={
+            'instructor','title','slug','photo','description','body',
+        }
     
+    def __init__(self ,*args, **kwargs):
+        super(CryptoSignalForm, self).__init__(*args, **kwargs)
+        self.fields['instructor'].widget.attrs.update({'class' : 'form-control'})     
+        self.fields['title'].widget.attrs.update({'class' : 'form-control'})     
+        self.fields['slug'].widget.attrs.update({'class' : 'form-control'})   
+        self.fields['photo'].widget.attrs.update({'class' : 'form-control'})    
+        self.fields['description'].widget.attrs.update({'class' : 'form-control'})
+        self.fields['body'].widget.attrs.update({'class' : 'form-control'})   
+        

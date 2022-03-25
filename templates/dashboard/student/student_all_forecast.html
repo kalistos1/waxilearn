@@ -72,7 +72,7 @@
 
                          {{ membership.betting_membership.membership_type}}
                         <div>    
-                            <button class="btn btn-success form-control"> <a href="{% url 'student_view_forecast' forecast.id %}" class="text-light">view Bet Forecast</a></button>
+                            <button class="btn btn-success form-control"> <a href="{% url 'student_view_forecast' forecast.slug %}" class="text-light">view Bet Forecast</a></button>
                         </div>
 
                         {% elif membership.betting_membership.membership_type == "Free" %}

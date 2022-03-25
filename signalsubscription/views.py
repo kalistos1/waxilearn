@@ -147,9 +147,9 @@ def all_signal(request):
 
 
 @login_required
-def previewSignal(request,pk):
+def previewSignal(request,slug):
 	user = request.user
-	signal= CryptoSignal.objects.get(pk=pk)
+	signal= CryptoSignal.objects.get(slug=slug)
 	context ={
         'user':user,
         'signal':signal, 
@@ -184,9 +184,9 @@ def CreateSignals(request):
 
 
 @login_required
-def EditSignal(request, pk):
+def EditSignal(request, slug):
 	if request.method =="POST":
-		signal = CryptoSignal.objects.get(pk=pk)
+		signal = CryptoSignal.objects.get(slug=slug)
 		signalForm = CryptoSignalForm(request.post, instance=signal)
 		if signalForm.is_valid():
 			signalForm.save()
@@ -200,7 +200,7 @@ def EditSignal(request, pk):
 			}
 			return render(request, 'dashboard/instructor/edit_signal.html',context)
 	else:
-		signal= CryptoSignal.objects.get(pk=pk)
+		signal= CryptoSignal.objects.get(slug=slug)
 		signalForm =CryptoSignalForm(instance=signal)
 		context ={
 			'signalForm':signalForm,
@@ -210,8 +210,8 @@ def EditSignal(request, pk):
 
 
 @login_required
-def DeleteSignal(request,pk):
-	CryptoSignal.objects.filter(pk=pk).delete()
+def DeleteSignal(request,slug):
+	CryptoSignal.objects.filter(slug=slug).delete()
 	signals = CryptoSignal.objects.filter(instructor_id=request.user.id)
 	context ={
 			'signals':signals
@@ -240,9 +240,9 @@ def studentAllSignal(request):
 
 
 @login_required
-def studentViewSignal(request,pk):
+def studentViewSignal(request,slug):
 	user = request.user
-	signal = CryptoSignal.objects.get(pk=pk)
+	signal = CryptoSignal.objects.get(slug=slug)
 	signal_user_membership = SignalUserMembership.objects.filter(user=request.user) 
 	signal_user_subscription = SignalSubscription.objects.all
 

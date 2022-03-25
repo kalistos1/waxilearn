@@ -84,6 +84,7 @@ class CryptoSignal(models.Model):
     signal_id = models.CharField(max_length=50, editable=False)
     instructor = models.ForeignKey(User, on_delete = models.CASCADE)
     title = models.CharField(null=False, blank=False, max_length=100)
+    slug = models.SlugField(null = False, blank = False, unique=True)
     photo = models.ImageField(null=True, upload_to='signals/')
     description =models.CharField(null=False, blank=False, max_length=200)
     body = RichTextField()

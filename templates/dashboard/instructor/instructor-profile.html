@@ -10,12 +10,13 @@
             <div class="container-fluid page__container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
 
                 <div class="text-center">
-                    <a href="#"><img src="/media/{{user.profile.photo }}" alt="" class="rounded-circle"></a>
-                    <h1 class="h2 mb-0 mt-1">{{user.first_name}} {{user.last_name}}</h1>
+                    <a href="#"><img src="/media/{{user.profile.photo }}" alt="insructor profile photo"  height="100px" width="100px" class="rounded-circle d-block mx-auto thumbnail"></a>
+                    <h1 class="h2 mb-0 mt-1">{{request.user.username}} </h1>
                     <p class="lead text-muted mb-0">{{user.profile.country}}</p>
                     <div class="badge badge-primary ">INSTRUCTOR</div>
                     <hr>
@@ -24,14 +25,15 @@
                         <i class="material-icons text-success">star</i>
                         <i class="material-icons text-success">star</i>
                         <i class="material-icons text-success">star</i>
-                        <i class="material-icons text-muted-light">star_border</i>
+                        <i class="material-icons text-success">star</i>
                         <i class="material-icons text-muted-light">star_border</i>
                     </div>
                 </div>
                 <hr>
-                <h4>Courses by {{user.username}}</h4>
+                <h4 class="h3">Courses by {{user.username}}</h4>
 
                 {% if user %}
+                 {% if courses %}
                 {% for course in courses %}
                 <div class="card">
                     <div class="card-header">
@@ -57,6 +59,11 @@
                 </div>
 
                 {% endfor %}
+                {% else %}
+                <div class="card">
+                   <h4 class=" h5 text-center text-danger pt-3"> You have not Uploaded a Course</h4>
+                </div>
+                {% endif %}
                 {% endif %}
 
 

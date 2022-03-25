@@ -73,7 +73,7 @@
                         {% if membership.signal_membership.membership_type == "Gold" %}
                            
                         <div>    
-                            <button class="btn btn-success form-control"> <a href="{% url 'student_view_signal' signal.id %}" class="text-light">view Signal</a></button>
+                            <button class="btn btn-success form-control"> <a href="{% url 'student_view_signal' signal.slug %}" class="text-light">view Signal</a></button>
                         </div>
 
                         {% elif membership.signal_membership.membership_type == "Free" %}

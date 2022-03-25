@@ -91,7 +91,7 @@ class BetForcast(models.Model):
     forcast_id = models. IntegerField(editable=False)
     instructor = models.ForeignKey(User, on_delete = models.CASCADE)
     title = models.CharField(null=False, blank=False, max_length=100)
-    slug =models.SlugField()
+    slug =models.SlugField(null = False, blank = False, unique=True)
     description =models.CharField(null=False, blank=False, max_length=200)
     home_team=models.CharField(null=False, blank=False, max_length=100)
     away_team=models.CharField(null=False, blank=False, max_length=100)
