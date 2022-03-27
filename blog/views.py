@@ -15,12 +15,13 @@ def PostList(request):
     return render(request,'blog/blog_all.html', context)
 
 
-def PostDetail(request):
-    # post = Post.objects.get(slug=slug)
-    # context ={
-    #     'post':post
-    # }
-    return render (request, 'blog/single_post.html')
+def PostDetail(request, slug):
+    get_post = Post.objects.get( slug=slug)
+
+    context ={
+        'get_post':get_post,
+    }
+    return render (request, 'blog/single_post.html',context)
 
 
 def category_post_list(request,slug):

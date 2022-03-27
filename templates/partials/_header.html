@@ -17,10 +17,10 @@
 
                 <ul class="nav navbar-nav mr-md-5 pr-md-5 d-md-flex flex-nowrap">
                     <li class="nav-item border-0 mr-3">
-                        <a class="nav-link text-light" href="#contact">Home</a>
+                        <a class="nav-link text-light" href="{% url 'index'%}">Home</a>
                     </li>
                     <li class="nav-item border-0 md-mr-22">
-                        <a class="nav-link text-light active" href="#contact">Blog</a>
+                        <a class="nav-link text-light active" href="{% url 'postlist'%}">Blog</a>
                     </li>
                     <li class="nav-item mt-2 d-none d-sm-block d-md-block">
                         <a class="btn btn-info " href="{% url 'accounts:register' %}" role="button"

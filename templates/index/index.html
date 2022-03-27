@@ -102,15 +102,14 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
 								<li class="nav-item">
-									<a class="nav-link" href="#concept">Concept</a>
-								</li>
-								<li class="nav-item">
 									<a class="nav-link" href="#courses">Courses</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="#subscription">subscription</a>
 								</li>
-
+								<li class="nav-item">
+									<a class="nav-link" href="#concept">Concept</a>
+								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="#team">Team</a>
 								</li>
@@ -147,28 +146,28 @@
 		<div class="hero-center-wrap relative-on-lg">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6 text-center text-lg-left parallax-fade-top align-self-center z-bigger">
-						<div>
-							<h2 class="text-white" style="font-size:25px;">Your one stop shop To E-learning, Crypto
-								& Crypto Signals, sports Forecast and Other Packages</h2>
+					<div class="col-lg-6 text-left parallax-fade-top align-self-center z-bigger">
+						<div class="bd">
+							<h2 class="text-white mb-5" >Your one stop <br  class="d-block d-sm-none">shop To E-learning, Crypto
+								& Crypto Signals, sports Forecast and other packages </h2>
+
 							<p class="mt-3 mb-4 pb-3 font-weight-normal text-white" style="font-size:16px;">We’ve
 								Trained hundreds of successful
 								Enterprenuers from the very basic up, Our courses are designed to guide you from the
 								basic.
 							</p>
-							<a class="btn btn-primary ml-lg-0 js-tilt mb-5 " href="{% url 'accounts:register' %}"
-								role="button" data-tilt-perspective="300" data-tilt-speed="700"
-								data-tilt-max="24"><span>Register
-									Now</span></a>
+							<a class="btn btn-lg btn-primary js-tilt" href="{% url 'accounts:register' %}"
+										role="button" data-tilt-perspective="300" data-tilt-speed="700"
+										data-tilt-max="24"><span>Register</span></a>
 
-							<a class="btn btn-primary ml-lg-0 js-tilt mb-5 " href="{% url 'accounts:login' %}"
-								role="button" data-tilt-perspective="300" data-tilt-speed="700"
-								data-tilt-max="24"><span>Sign In</span></a>
+									<a class="btn btn-primary js-tilt" href="{% url 'accounts:login' %}" role="button"
+									data-tilt-perspective="300" data-tilt-speed="700" data-tilt-max="24"><span>Sign
+										in</span></a>
 						</div>
 					</div>
-					<div class="col-lg-6 mt-lg-0 mb-3">
+					<div class="col-lg-6 mt-5 mt-sm-5 mt-lg-0 mb-3">
 						<div class="">
-							<img src="{% static 'img/logos/img.jpg' %}" alt="" class="img-fluid" style="">
+							<img src="{% static 'img/logos/img.jpg' %}" alt="" class="img-fluid  d-block mx-auto" >
 
 						</div>
 					</div>
@@ -189,7 +188,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" id="roadmap">
+			<div class="section padding-bottom" id="roadmap">
 				<div class="background-parallax" style="background-image: url('img/parallax-dark.jpg')"
 					data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
 				<div class="container">
@@ -213,7 +212,10 @@
 										<img src="/media/{{ course.photo }}" alt="course image"
 											class="avatar-img rounded img-thumbnail img-fluid mx-auto d-block"
 											style="height:150px; width:180px;">
-										<p class="text-light">{{course.description|safe}}</p>
+											<div class="text-light">
+												<p class="text-light">{{course.description|safe}}</p>
+											</div>
+										
 									</div>
 								</div>
 								{% endfor %}
@@ -223,80 +225,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="section pt-5 padding-bottom-big background-dark-blue-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="title-wrap text-center">
-								<h3 class="text-white"> Bet Forecast </h3>
-							</div>
-						</div>
-						<div class="col-md-7" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
-							<div class=" text-center">
-								<h5 class="title-wrap text-white d-none d-sm-block d-md-block"> Winning Graph</h5>
-							</div>
-							<div class="line-chart">
-								<div class="aspect-ratio">
-									<canvas id="chart"></canvas>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-5" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
-							<div class=" text-center  ">
-								<h5 class="title-wrap text-white d-none d-sm-block d-md-block">Most Recent Wins</h5>
-							</div>
-							<div class="line-chart mt-5">
-								<div class="aspect-ratio mt-5">
-									<table class="table table-success table-small table-bordered table-responsive  mt-sm-0">
-										<thead>
-											<tr>
-												<th scope="col">Events</th>
-												<th scope="col">1</th>
-												<th scope="col">X</th>
-												<th scope="col">2</th>
-												<th scope="col">prediction</th>
-												<th scope="col">Win Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="bg-success text-light">
-												<td>ManU - Chelsea</td>
-												<td>1.98</td>
-												<td>3.50</td>
-												<td>1.80</td>
-												<td>1.97</td>
-												<td class="badge badge-danger">Lost</td>
-											</tr>
-											<tr class="bg-success text-light">
-												<td>Arsenal - Barca</td>
-												<td>1.98</td>
-												<td>3.50</td>
-												<td>1.80</td>
-												<td>1.97</td>
-												<td class="badge badge-info">Won</td>
-											</tr>
-											<tr class="bg-success text-light">
-												<td>Roma - Ajax</td>
-												<td>1.98</td>
-												<td>3.50</td>
-												<td>1.80</td>
-												<td>1.97</td>
-												<td class="badge badge-info">Won</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-md-12 padding-bottom">
+			<div class="col-md-12 padding-bottom-small">
 				<div class="line-sep"></div>
 			</div>
 
-			<div class="section" id="subscription">
+			<div class="section padding-bottom" id="subscription">
 				<div class="container ">
 					<div class="row">
 						<div class="col-md-12 text-center ">
@@ -379,6 +313,85 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="col-md-12 padding-bottom">
+				<div class="line-sep"></div>
+			</div>
+
+			<div class="section pt-3 padding-bottom-big background-dark-blue-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="title-wrap text-center">
+								<h3 class="text-white"> Bet Forecast </h3>
+							</div>
+						</div>
+						<div class="col-md-7" data-scroll-reveal="enter mt-5 bottom move 50px over 0.6s after 0.3s">
+							<!-- <div class=" text-center">
+								<h5 class="title-wrap text-white d-none d-sm-block d-md-block"> Winning Graph</h5>
+							</div> -->
+							<div class="line-chart">
+								<div class="aspect-ratio">
+									<canvas id="chart"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
+							<!-- <div class=" text-center  ">
+								<h5 class="title-wrap text-white d-none d-sm-block d-md-block">Most Recent Wins</h5>
+							</div> -->
+							<div class="line-chart mt-5">
+								<div class="aspect-ratio mt-5">
+									<table class="table table-success table-small table-bordered table-responsive  mt-sm-0">
+										<thead>
+											<tr>
+												<th scope="col">Events</th>
+												<th scope="col">1</th>
+												<th scope="col">X</th>
+												<th scope="col">2</th>
+												<th scope="col">prediction</th>
+												<th scope="col">Win Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="bg-success text-light">
+												<td>ManU - Chelsea</td>
+												<td>1.98</td>
+												<td>3.50</td>
+												<td>1.80</td>
+												<td>1.97</td>
+												<td class="badge badge-danger">Lost</td>
+											</tr>
+											<tr class="bg-success text-light">
+												<td>Arsenal - Barca</td>
+												<td>1.98</td>
+												<td>3.50</td>
+												<td>1.80</td>
+												<td>1.97</td>
+												<td class="badge badge-info">Won</td>
+											</tr>
+											<tr class="bg-success text-light">
+												<td>Roma - Ajax</td>
+												<td>1.98</td>
+												<td>3.50</td>
+												<td>1.80</td>
+												<td>1.97</td>
+												<td class="badge badge-info">Won</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 padding-bottom-small">
+				<div class="line-sep"></div>
+			</div>
+
+			
 		</div>
 		<div class="section padding-top background-dark-blue-2" id="concept">
 			<div class="container padding-bottom-big">
@@ -386,8 +399,7 @@
 					<div class="col-md-12">
 						<div class="title-wrap text-center">
 							<div class="back-title">concept</div>
-							<h3 class="text-white">We are the only platform <br>dedicated to making you rich.</h3>
-
+							<h3 class="text-white">We are the only Platform <br>Dedicated to making you rich.</h3>
 						</div>
 					</div>
 					<div class="col-md-4">
@@ -427,7 +439,7 @@
 		</div>
 	</div>
 
-	<div class="section padding-top-bottom-big" id="team">
+	<div class="section padding-top" id="team">
 		<div class="background-parallax" style="background-image: url({% static 'img/parallax-dark-1.jpg' %})"
 			data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
 		<div class="container">
@@ -464,25 +476,23 @@
 				</div>
 				{% endfor %}
 				
-				<div class="col-md-12 padding-top-small">
+				<div class="col-md-12 padding-top" id="news">
 					<div class="title-wrap text-center mb-5">
-						<h5 class="text-white">From Our Blog</h5>
+						<h3 class="text-white">Latest From Our Blog</h3>
 					</div>
 				</div>
 
 				{% if blog_posts %}
 				  {% for post in blog_posts %}
-				<div class="col-xl-3 col-md-6 mb-5 mb-xl-0 ">
+				<div class="col-xl-3 col-md-6 mb-5 mb-xl-0" >
 						<!-- Simple card -->
 						<div class="card shadow">
 						
-							<img class="card-img-top img-fluid" src="/media/{{ post.image }}"
-								alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title mb-3"><a href="#" class="text-light ">{{post.title}}.</a></h4>
-								<p class="card-text fs-5 text-light">Some quick example text to build on the card title and make
-									up the bulk of the card's content.</p>
-								<a href="#" class="btn btn-primary waves-effect waves-light">read</a>
+							<img class="card-img-top img-fluid  d-block mx-auto"  src="/media/{{ post.image }}" alt="Card image cap">
+							<div class="card-body  text-light">
+								<h4 class="card-title mb-3"><a href="{% url 'postdetail' post.slug %}" class="text-light ">{{post.title}}.</a></h4>
+								<p class="card-text fs-5">{{post.body|truncatewords:20|safe}}</p>
+								<a href="{% url 'postdetail' post.slug %}" class="btn btn-primary waves-effect waves-light">read</a>
 							</div>
 						</div>
 				</div><!-- end col -->
@@ -491,7 +501,7 @@
 
 				<div class="col-md-12 mt-2">
 					<div class="title-wrap text-center ">
-						<h5 class="text-white btn btn-primary waves-effect waves-light">Goto Blog page</h5>
+						<a href="{% url 'postlist' %}"><h5 class="text-white btn btn-primary waves-effect waves-light">Goto Blog page</h5></a>
 					</div>
 				</div>
 				

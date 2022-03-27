@@ -9,7 +9,7 @@
     <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
         <div class="mdk-drawer-layout__content page ">
             <div class="body container-fluid">
-                <div class="row">
+                <div class="row d-flex flex-column-reverse flex-sm-column-reverse flex-md-row flex-lg-row">
                     <div class="col-md-3">
                         <div class="row">
                             <div class="col-md-12">
@@ -90,7 +90,7 @@
 
                                         {{post.body|safe}}
                                         <div class="mt-4">
-                                           <a href="#" class="text-light d-block"> <button class="btn d-block bg-info text-light">Read More</button></a> 
+                                           <a href="{% url 'postdetail' post.slug %}" class="text-light d-block"> <button class="btn d-block bg-info text-light">Read More</button></a> 
                                         </div>
                                     </div>
                                 </div>
